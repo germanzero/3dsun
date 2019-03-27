@@ -1,0 +1,126 @@
+<div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">Social network settings</div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5 class="text-justify">Update the information below.</h5>
+                        </div>
+                        <hr>
+                        <form id="form-social" name="form-social" action="" method="post" novalidate="novalidate">
+    
+                            <div class="row form-group">
+                                <div class="col-6 text-left">
+                                    <h4 for="cc-title" class="control-label mb-1 t-blu"></h4>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <button id="payment-button" type="submit" class="btn btn-sm btn-success">
+                                        <i class="fa fa-edit fa-lg"></i>&nbsp;
+                                        <span id="payment-button-amount">Save</span>
+                                        <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                    </button>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <img id="send-gif" class="invisible" src='{SERVER_URL}/images/loading-line.gif'>
+                                </div>
+                            </div>
+                            
+                            <div class="row form-group">
+    
+                                    <div class="col-3 text-right">
+                                        <label for="cc-facebook" class="control-label mb-1">Facebook </label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="cc-facebook" name="cc-facebook" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="Facebook user here..." value="{FACEBOOK_URL}">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+    
+                                        <div class="col-3 text-right">
+                                            <label for="cc-twitter" class="control-label mb-1">Twitter </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input id="cc-twitter" name="cc-twitter" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="Twitter user here..." value="{TWITTER_URL}">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+    
+                                            <div class="col-3 text-right">
+                                                <label for="cc-youtube" class="control-label mb-1">Youtube </label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input id="cc-youtube" name="cc-youtube" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="Youtube user here..." value="{YOUTUBE_URL}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+    
+                                            <div class="col-3 text-right">
+                                                <label for="cc-instagram" class="control-label mb-1">Instagram </label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input id="cc-instagram" name="cc-instagram" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="Instagram user here..." value="{INSTAGRAM_URL}">
+                                            </div>
+                                        </div>
+                                                                
+                                        <div class="row form-group">
+                                            <div class="col-12 text-right">
+                                                <div id="alert-resp" style="display:none;">
+                                                    
+                                                </div>
+                                            </div>
+                            
+                                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            
+                
+            $("#form-social").submit(function (e) {
+                $("#alert-resp").hide();
+                e.preventDefault();
+                e.stopPropagation();
+                    $("#send-gif").removeClass("invisible");
+                    $("#msj-send").hide();
+                    $("#msj-sending").show();
+                    $("#btn-send").addClass("disabled");
+                    $("#btn-send").attr("aria-disabled", "true");
+                    var form = jQuery("#form-social").serialize();
+    
+                    var file_data = new FormData();
+    
+                    file_data.append("accion", "update-social");
+                    file_data.append("formula", form);
+                    
+                        for (var key of file_data.entries()) {
+                            console.log(key[0] + ', ' + key[1]);
+                        }
+                    
+                    $.ajax({
+                        type: "POST",
+                        url:  "{SERVER_URL}/admin/ajax/settings.php",
+                        data: file_data,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            $("#alert-resp").show();
+                            console.log(response);
+                            res = JSON.parse(response);
+                            console.log(res);
+                            $("#alert-resp").html(res.msj);
+                            jQuery("#send-gif").addClass("invisible");
+                        }
+                    });
+               
+            });
+    
+        });
+        </script>

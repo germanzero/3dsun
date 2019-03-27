@@ -1,0 +1,152 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <div class="card">
+                <div class="card-header">{TITLE-FORM}</div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 class="text-justify">Update the advertising banner. Enable or disable. </h5>
+                    </div>
+                    <hr>
+                    <form action="" method="post" name="form-general" id="form-general">
+                        
+                        {IMG-INPUT-PANEL}
+                        <hr>
+                        <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="status" class=" form-control-label">Status</label>
+                            </div>
+                            <div class="col-3">
+                                <select name="status" id="status" class="form-control">
+                                    <option value="enabled">Enabled</option>
+                                    <option value="disabled">Disabled</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="URL" class="control-label mb-1">URL target</label>
+                            </div>
+                            <div class="col-9">
+                                <input id="HREF" name="HREF" value="{HREF}" type="text" class="form-control col-5" aria-required="true" aria-invalid="false" placeholder="subtitle here...">
+                            </div>
+
+                        </div>
+                        
+                        
+                        <div class="row form-group">
+                            <div class="col-9 text-right">
+                                <img id="send-gif" class="float-right invisible" src='{SERVER_URL}/images/loading-line.gif'>
+                                <div id="alert-resp" class="alert" role="alert" style="display:none;">
+                                    </div>
+                            </div>
+                            <div class="col-3 text-right">
+                                <button id="save-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                    <i class="fa fa-edit fa-lg"></i>&nbsp;
+                                    <span id="save-msj">Update</span>
+                                    <span id="save-sending" style="display:none;">Sending…</span>
+                                </button>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+//general
+$("#form-general").submit(function (e) {
+    $("#alert-resp").hide();
+    $("#send-gif").show();
+    e.preventDefault();
+    e.stopPropagation();
+        $("#send-gif").removeClass("invisible");
+        $("#msj-send").hide();
+        $("#msj-sending").show();
+        $("#btn-send").addClass("disabled").attr("aria-disabled", "true");
+        
+        var file_data = new FormData();
+
+        file_data.append("accion", "update-banner");
+        file_data.append("EID", "{EID}");
+        file_data.append("EID-BAN", "{EID-BAN}");
+        file_data.append("HREF", $("#HREF").val());
+        file_data.append("status", $("#status").val());
+        for (var key of file_data.entries()) {
+            console.log(key[0] + ', ' + key[1]);
+        }
+    
+        $.ajax({
+            type: "POST",
+            url:  "{SERVER_URL}/admin/ajax/home.php",
+            data: file_data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $("#alert-resp").show();
+                res = JSON.parse(response);
+                $("#alert-resp").html(res.msj);
+                $("#send-gif").hide();
+            }
+        });
+    
+});
+
+//Banner
+$("#{INPUT-ID-BANNER}-up-btn").click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $("#send-gif-b").show();
+        
+            var unform = $("#form-pictures")[0];
+            var file_data = new FormData(unform);
+            file_data.append("accion", "upload-banner");
+            file_data.append("{INPUT-ID-BANNER}", $("#{INPUT-ID-BANNER}")[0].files[0]);
+            file_data.append("EID", "{EID}");
+            file_data.append("EID-BAN", "{EID-BAN}");
+            file_data.append("{INPUT-ID-BANNER}-alt", $("#{INPUT-ID-BANNER}-alt").val());
+        
+            $.ajax({
+              type: "POST",
+              url: "{SERVER_URL}/admin/ajax/home.php",
+              data: file_data,
+              cache: false,
+              contentType: false,
+              processData: false,
+              success: function(response) {
+                $("#alert-resp").show();
+                res = JSON.parse(response);
+                $("#{INPUT-ID-BANNER}-label").text("Upload New Image");
+                $("#{INPUT-ID-BANNER}").val("");
+                if (res.code == 1) {
+                    console.log(res);
+                    $("#box-act-{INPUT-ID-BANNER} img").attr("src",res.url);
+                    $("#ALT-TEXT").text(res.alt_text);
+                } 
+                $("#box-{INPUT-ID-BANNER}").slideUp(100);
+                $("#box-act-{INPUT-ID-BANNER}").slideDown(250);
+                $("#alert-resp").html(res.msj);
+                $("#send-gif").hide();
+              }
+            });
+          });   
+
+
+//load values
+$(document).ready(function (e) {
+    $("#status").val("{STATUS}");
+    $("#send-gif").hide();
+    $("#alert-resp").hide();
+    $("#box-{INPUT-ID-BANNER}").addClass("d-none");
+        
+});
+
+
+
+</script>

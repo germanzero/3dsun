@@ -1,0 +1,23 @@
+<div class="card border-0">
+        <div class="card-header border-0" id="qtn{ID}">
+            <h5 class="mb-0 d-inline">
+                <button class="btn btn-link collapsed paragraf t-gd" type="button" data-toggle="collapse" data-target="#collapse{ID}" aria-expanded="true"
+                    aria-controls="collapse{ID}">
+                    {NUMBER}. {TITLE}
+                    <i class="fa fa-plus ml-1 d-inline"></i>
+                </button>
+            </h5>
+            <button class="btn btn-danger float-right del-faq-btn" data-id="{ID}" type="button" >
+                <i class="fa fa-trash ml-1 d-inline"></i>Delete
+            </button>
+        </div>
+
+        <div id="collapse{ID}" class="collapse" aria-labelledby="qtn{ID}" data-parent="#accordionFAQ">
+            <div class="card-body">
+                <p class="paragraf text-justify t-g">
+                   {CONTENT}
+                </p>
+                <h5 class="d-inline">URL:  </h5><a href="{URL}" id="more-{ID}" class="mt-3 mb-2 w-25 "></a>{URL}</a>
+            </div>
+        </div>
+</div>

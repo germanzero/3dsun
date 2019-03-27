@@ -1,0 +1,54 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 mb-5">
+            <!-- DATA TABLE -->
+            <h3 class="title-5 m-b-35">Blog entry list</h3>
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+                   
+                    <div class="rs-select2--dark rs-select2--sm">
+                        <select class="js-select2" name="time">
+                            <option selected="selected">Today</option>
+                            <option value="">From the beginning</option>
+                            <option value="">From the end</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                    <button class="au-btn-filter">
+                        <i class="zmdi zmdi-filter-list"></i>filters</button>
+                </div>
+                <div class="table-data__tool-right">
+                    <a href="post_crx.php" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-plus"></i>New Blog Post</a>
+
+                </div>
+            </div>
+            <div class="table-responsive table-responsive-data2">
+                <table class="table table-data2">
+                    <thead class="bg-blue">
+                        <tr>
+                            <th><span class="t-w">ID</span></th>
+                            <th><span class="t-w">title</span></th>
+                            <th><span class="t-w">author</span></th>
+                            <th><span class="t-w">date</span></th>
+                            <th><span class="t-w">status</span></th>
+                            <th><span class="t-w">options</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ROWS}
+                        
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                            <td colspan="6" class="text-center">
+                                <button class="au-btn au-btn-load js-load-btn">load more</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- END DATA TABLE -->
+        </div>
+    </div>
+</div>

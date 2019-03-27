@@ -1,0 +1,17 @@
+<label  class="{CLASS}">
+  <span id="{ID}-label">{TEXT}</span> <input id="{ID}" type="file" />
+</label>
+<input type="text" id="{ID}-alt" class="form-control col-3 d-inline ml-2" value="" placeholder="Alt Text Here">
+<button id="{ID}-up-btn" type="button" class="btn btn-success ml-2 upload-btn-input">
+  <i class="fa fa-arrow-circle-up fa-lg"></i>&nbsp;
+  <span id="up-go">Upload</span>
+  <span id="up-go-on" style="display:none;">Uploading…</span>
+</button>
+
+<script>
+$("#{ID}").change(function(e) {
+  var filename =  $("#{ID}").val();
+  $("#{ID}-label").text(filename);
+});
+
+</script>

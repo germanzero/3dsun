@@ -1,0 +1,143 @@
+<div class="container-fluid bg-gray footer-top-bdr">
+
+    <div class="row pt-3 pb-5 ml-5 mr-5">
+
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12  pt-5">
+            <h3 class="t-g subtitle-xs">Request a quote. Ask about job openings. Or just say hi. Whatever your reason, just fill out the contact form
+                below. We’d love to hear from you.</h3>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8  pt-2 pr-5" id="row-form">
+
+            <form id="formcontact">
+                <div class="form-row pl-4 pr-4 pt-4">
+                    <div class="col pr-4">
+                        <input type="text" id="con-name" name="con-name" class="form-control rounded-0 border-0 t-g" placeholder="YOUR NAME *">
+                    </div>
+                    <div class="col">
+                        <input type="text" id="con-email" name="con-email" class="form-control rounded-0 border-0 t-g" placeholder="YOUR EMAIL *">
+                    </div>
+                </div>
+                <div class="form-row  pl-4 pr-4 pt-2">
+                    <div class="col pr-4">
+                        <input type="text" id="con-phone" name="con-phone" class="form-control rounded-0 border-0 t-g" placeholder="YOUR PHONE *">
+                    </div>
+                    <div class="col">
+                        <input type="text" id="con-address" name="con-address" class="form-control rounded-0 border-0 t-g" placeholder="YOUR ADDRESS ">
+                    </div>
+                </div>
+                <div class="form-row  pl-4 pr-4 pt-2 pb-2">
+                    <div class="col">
+                        <textarea type="text" id="con-msg" name="con-msg" class="form-control rounded-0 border-0 t-g" placeholder="YOUR MESSAGE " style="min-height: 250px;">{MSJ_VAL}</textarea>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="col-12">
+                        <img id='send-gif' class="float-right invisible" src='{SERVER_URL}/images/loading-line.gif'>
+                    </div>
+
+                </div>
+                <div class="form-row  pl-4 pr-4 pt-4">
+                    <div class="col box-btn">
+                        <button class="btn bg-magenta t-w rounded-0 border-0 pt-2" type="submit" id="btn-send">SUBMIT&nbsp;
+                            <i class="fa fa-angle-right ml-3"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-map">
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+    var SERVER_URL = "{SERVER_URL}";
+    jQuery(document).ready(function () {
+
+        jQuery("#send-gif").hide(100);
+        $("#show-helps").click(function () {
+            $("#formcontact input").popover('toggle');
+        });
+
+        function invalidate_input(id) {
+            jQuery(id).addClass("is-invalid");
+            jQuery(id).attr("required");
+            $(id).popover('toggle');
+        }
+        function validate_input(id) {
+            jQuery(id).removeClass("is-invalid");
+            jQuery(id).addClass("is-valid");
+            $(id).popover('hide');
+        }
+
+        function validate_msg() {
+            if (jQuery("#con-name").val() === "") { invalidate_input("#con-name"); $( "#con-name" ).focus(); return false; } else { validate_input("#con-name"); }
+            if (jQuery("#con-email").val() === "") { invalidate_input("#con-email"); $( "#con-email" ).focus(); return false; } else { validate_input("#con-email"); }
+            if (jQuery("#con-phone").val() === "") { invalidate_input("#con-phone"); $( "#con-phone" ).focus(); return false; } else { validate_input("#con-phone"); }
+
+            return true;
+
+        }
+
+
+
+
+        jQuery("#formcontact").submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (validate_msg()) {
+
+                jQuery("#send-gif").show(100);
+                jQuery("#btn-send").addClass("disabled");
+                jQuery("#btn-send").attr("aria-disabled", "true");
+                var form = jQuery("#formcontact").serialize();
+
+                var file_data = new FormData();
+
+                file_data.append("accion", "contacto_web");
+                file_data.append("formula", form);
+                /*
+                    for (var key of file_data.entries()) {
+                        console.log(key[0] + ', ' + key[1]);
+                    }
+                */
+                $.ajax({
+                    type: "POST",
+                    url: SERVER_URL + "/web/server/contact.php",
+                    data: file_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        console.log(response);
+                        res = JSON.parse(response);
+                        console.log(res);
+
+                        if (res.code == 1) {
+                            jQuery(".box-btn").slideUp(200);
+                            jQuery("#row-form").slideUp(100);
+                            jQuery("#row-form").html(res.msj);
+                            jQuery("#row-form").slideDown(200);
+
+                        }
+
+                        //jQuery(".row-form").html(res.msj);
+                        jQuery("#send-gif").hide(100);
+                    }
+                });
+            }
+        });
+
+
+
+    });
+
+
+
+
+</script>

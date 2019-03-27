@@ -1,0 +1,152 @@
+<div class="container-fluid  bg-gray footer-top-bdr pt-2">
+    <div class="row pt-5 ml-5 pb-5">
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 p-2 pl-4 pr-5 ">
+            <img src="{SERVER_URL}{PIC-HEADER}" class="rounded-0 pr-5 w-100" alt="A generic square placeholder image with rounded corners in a figure.">
+            <h1 class="title t-g mb-0">{TITLE}</h1>
+            <h3 class="subtitle-xs t-g">{SUBTITLE}</h3>
+            <!-- <p class="paragraf t-g pt-2 pr-5">-->
+            <div class="media-desc pt-2 pr-5">  
+                {CONTENT}
+            </div>
+            <div>
+                <button type="button" id="btn-date" class="btn btn-sm btn-outline-secondary rounded-0">{DATE}</button>
+                <button type="button" id="btn-autor" class="btn btn-sm btn-outline-secondary rounded-0">{AUTOR}</button>
+                <button type="button" id="btn-comments" class="btn btn-sm btn-outline-secondary rounded-0">COMMENTS</button>
+                <!-- AddToAny BEGIN -->
+                <div class="a2a_kit a2a_kit_size_32 a2a_default_style d-inline float-right">
+
+                    <a class="a2a_button_facebook" data-a2a-follow="Sun-3D-Corporation"></a>
+                    <a class="a2a_button_twitter" data-a2a-follow="sun3dcorp"></a>
+                    <a class="a2a_button_google_plus"></a>
+                    <a class="a2a_button_linkedin"></a>
+                    <a class="a2a_button_pinterest"></a>
+                    <a class="a2a_button_email"></a>
+                    <a class="a2a_button_reddit"></a>
+                    <a class="a2a_button_tumblr"></a>
+
+                </div>
+
+                <script async src="https://static.addtoany.com/menu/page.js"></script>
+                <!-- AddToAny END -->
+            </div>
+
+
+            <br>
+            <button type="button" id="btn-comment" class="btn btn-sm bg-blue-d rounded-0 t-w mt-3">POST COMMENT</button>
+            <button type="button" id="btn-gyp" class="btn btn-sm bg-blue-d rounded-0 t-w mt-3">VIEW COMMENTS</button>
+
+            <div id="box-comments" class="w-100 p-2 mt-3">
+                <h3 class="subtitle t-gd">Comments:</h3>
+                <div id="comments-list">{COMMENTS}</div>
+            </div>
+
+            <div id="box-comment" class="w-100 p-2 mt-3">
+                <form id="form-comment">
+                    <div class="form-group row">
+                        <div class="col-12 text-left">
+                            <h3 class="subtitle t-gd">Post Comment
+                                <i class="fa fa-pencil ml-3"></i>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col">
+                            <input type="text" class="form-control t-g" id="Email" name="Email" value="" placeholder="Email *">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control t-g" id="Name" name="Name" value="" placeholder="Name *">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <textarea type="text" class="form-control t-g w-100" id="Message" name="Message" value="" placeholder="Write here your comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="text-right w-100">
+                            <button type="button" id="btn-send-comment" class="btn t-g bg-white rounded-0 mr-4">SEND</button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 p-2">
+            <h1 class="mt-0 mr-lg-3 subtitle pl-2 t-g">LATEST POSTS</h1>
+            <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+            <iframe src="http://lightwidget.com/widgets/4ff97e3bd84d530c902fdd351aacc428.html" scrolling="no" allowtransparency="true"
+                class="lightwidget-widget pr-5" style="width:100%;border:0;overflow:hidden;"></iframe>
+
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(document).ready(function () {
+        $("#box-comments").slideUp(100);
+        $("#box-comment").slideUp(100);
+
+        $("#btn-gyp").click(function () {
+            if ($("#box-comments").css("display") == "none") {
+                $("#box-comments").slideDown(500);
+            } else {
+                $("#box-comments").slideUp(250);
+            }
+        });
+
+        $("#btn-comment").click(function () {
+            if ($("#box-comment").css("display") == "none") {
+                $("#box-comment").slideDown(500);
+            } else {
+                $("#box-comment").slideUp(250);
+            }
+        });
+
+        $("#btn-send-comment").click(function () {
+            $("#box-comment").slideUp(250);
+            $("#box-comments").slideUp(250);
+            var form = jQuery("#form-comment").serialize();
+            var file_data = new FormData();
+
+            file_data.append("accion", "comment_web");
+            file_data.append("formula", form);
+            file_data.append("EID", "{EID}");
+            /*
+                for (var key of file_data.entries()) {
+                    console.log(key[0] + ', ' + key[1]);
+                }
+            */
+            $.ajax({
+                type: "POST",
+                url: SERVER_URL + "/web/server/contact.php",
+                data: file_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+                    res = JSON.parse(response);
+                    console.log(res);
+
+                    if (res.code == 1) {
+                        jQuery(".box-btn").slideUp(200);
+                        jQuery("#row-form").slideUp(100);
+                        jQuery("#row-form").html(res.msj);
+                        jQuery("#row-form").slideDown(200);
+                        jQuery("#comments-list").html(res.list);
+                        $("#box-comments").slideDown(500);
+                    }
+
+                    //jQuery(".row-form").html(res.msj);
+                    jQuery("#send-gif").hide(100);
+                }
+            });
+           
+        });
+    });
+</script>

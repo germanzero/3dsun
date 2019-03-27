@@ -1,0 +1,114 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-lg-12">
+      <div class="card">
+        <div class="card-header">Header video - Home</div>
+        <div class="card-body video-high">
+          <div class="card-title">
+            <h5 class="text-justify">Update the video from the header</h5>
+          </div>
+          <hr />
+            <div class="row form-group video-box">
+              <div class="col-3 text-right">
+                <label class="mb-1 t-blu">Video</label>
+              </div>
+              <div class="col-9" id="video-ctn">
+                <h5>Actual Video</h5>
+                <video class="" width="300" height="140" muted controls autoplay >
+                    <source src="{HOME_VIDEO}" type="video/mp4"> 
+                </video>
+                <br />
+                <button class="btn btn-warning btn-change">Change Video</button>
+              </div>
+            </div>
+            <div class="row form-group upload-box">
+              <div class="col-3 text-right">
+                <label for="file-input" class="mb-1 t-blu">Upload Video</label>
+              </div>
+              <div class="col-9">
+                {IMG_INPUT}<button class="ml-1 btn btn-danger btn-cancel">Cancel</button>
+              </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3 text-left">
+                    <img id="send-gif" class="float-right invisible" src='{SERVER_URL}/images/loading-line.gif'>
+                </div>
+                <div class="col-12 text-right">
+                    <div id="alert-resp">
+                    </div>
+                </div> 
+            </div>
+        </form>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function(){ 
+    $(".upload-box").addClass("invisible");
+    $("#input-video-alt").removeClass("d-inline").addClass("d-none");
+  });
+
+    $(".btn-change").click(function(){$(".video-box").slideUp(250); $(".upload-box").removeClass("invisible");$(".upload-box").slideDown(200);});
+    $(".btn-cancel").click(function(){;$(".video-box").slideDown(250);$(".upload-box").addClass("invisible");});
+  
+  $("#{FILE-ID}-up-btn").click(function(e){
+    
+    e.preventDefault();
+    e.stopPropagation();
+
+    if($("#{FILE-ID}")[0].files[0].size>4250000){
+      $("#alert-resp").show();
+      $("#alert-resp").html('<div class="alert alert-warning alert-dismissible fade show w-100 m-0" role="alert">Video size exceeded, 4MB is the maximun size<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+      $("#send-gif").addClass("invisible");
+      return;
+    }
+    if($("#{FILE-ID}")[0].files[0].size<1000){
+      $("#alert-resp").show();
+      $("#alert-resp").html('<div class="alert alert-warning alert-dismissible fade show w-100 m-0" role="alert">Please select a valid video file<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+      $("#send-gif").addClass("invisible");
+      return;
+    }
+
+    $("#send-gif").removeClass("invisible");
+    
+    $("#box-img-resp").html("");
+
+    var unform = $("form")[0];
+    var file_data = new FormData(unform);
+    file_data.append("accion", "update-video");
+    file_data.append("{FILE-ID}", $("#{FILE-ID}")[0].files[0]);
+        
+    $.ajax({
+      type: "POST",
+      url: "{SERVER_URL}/admin/ajax/home.php",
+      data: file_data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        $("#alert-resp").show();
+        res = JSON.parse(response);
+
+        if (res.code == 1) {
+            $('#video-ctn video source').attr('src', res.video);
+            $("#video-ctn video")[0].load();
+            $(".upload-box").slideUp(250);
+            $(".video-box").slideDown(450);
+            $("#{FILE-ID}-label").text("Select Video Here");
+
+        }
+        $("#alert-resp").html(res.msj);
+        $("#send-gif").addClass("invisible");
+
+      }
+    });
+
+
+
+    });
+</script>

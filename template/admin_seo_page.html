@@ -1,0 +1,183 @@
+<div class="body">
+        <div class="card-title">
+            <h5 class="text-justify">Update so that search results have better information.</h5>
+        </div>
+        <hr>
+        <form action="" method="post" id="form-seo-{ID_PAGE}" name="form-seo-{ID_PAGE}">
+            <div class="row form-group">
+                <div class="col-6 text-left">
+                    <h4  class="control-label mb-1 t-blu"></h4>
+                </div>
+                <div class="col-6 text-right">
+                   &nbsp;
+                </div>
+            </div>
+            {IMG-INPUT-PANEL}
+            <div class="row form-group">
+                <div class="col-3 text-right">
+                    <label for="title-{ID_PAGE}" class="control-label mb-1">Page Title</label>
+                </div>
+                <div class="col-9">
+                    <input id="title-{ID_PAGE}" name="title-{ID_PAGE}" type="text" value="{TITLE}" class="form-control" aria-required="true" aria-invalid="false" placeholder="title here...">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-3 text-right">
+                    <label for="tags-{ID_PAGE}" class="control-label mb-1">META tags</label>
+                </div>
+                <div class="col-9">
+                    <input id="tags-{ID_PAGE}" name="tags-{ID_PAGE}" type="text" value="{META}" class="form-control" aria-required="true" aria-invalid="false" placeholder="subtitle here...">
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-3 text-right">
+                    <label for="desc-{ID_PAGE}" class=" form-control-label">Description</label>
+                </div>
+                <div class="col-9">
+                    <textarea class="form-control" id="desc-{ID_PAGE}" name="desc-{ID_PAGE}">{PARAGRAF}</textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-10 text-right">
+                    <img id="send-gif-{ID_PAGE}" class="float-right invisible" src='{SERVER_URL}/images/loading-line.gif'>
+                </div>
+                <div class="col-2 text-right">
+                    <button id="btn-send" type="submit" class="btn btn-sm btn-info">
+                        <i class="fa fa-edit fa-lg"></i>&nbsp;
+                        <span id="msj-send">Save</span>
+                        <span id="msj-sending" style="display:none;">Sending…</span>
+                    </button>
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-12 text-right">
+                    <div id="alert-resp-{ID_PAGE}" class="alert" role="alert" style="display:none;">
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+        </form>
+    </div>
+    <script>
+    $(document).ready(function () {
+        
+        $("#{IMG-INPUT-ID}-up-btn").after('<button class="ml-1 btn btn-danger btn-cancel-{ID_PAGE}">Cancel</button>');
+        $(".btn-cancel-{ID_PAGE}").click(function(e){e.preventDefault();e.stopPropagation();$("#form-seo-{ID_PAGE} #box-img-act").slideDown(450); $("#form-seo-{ID_PAGE} #box-input-img").slideUp(200);});
+        $("#form-seo-{ID_PAGE} #box-input-img").addClass("d-none");
+
+        function del_click() {
+            $("#form-seo-{ID_PAGE} #btn-del-hdr").click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $("#form-seo-{ID_PAGE} #box-input-img").removeClass("d-none");
+            $("#form-seo-{ID_PAGE} #box-img-act").slideUp(250);
+            $("#form-seo-{ID_PAGE} #box-input-img").slideDown(450);
+            });
+        }
+
+        $("#form-seo-{ID_PAGE}").submit(function (e) {
+            $("#alert-resp-{ID_PAGE}").hide();
+            e.preventDefault();
+            e.stopPropagation();
+                $("#send-gif-{ID_PAGE}").removeClass("invisible");
+                $("#msj-send").hide();
+                $("#msj-sending").show();
+                $("#btn-send").addClass("disabled");
+                $("#btn-send").attr("aria-disabled", "true");
+                var form = jQuery("#form-seo-{ID_PAGE}").serialize();
+
+                var file_data = new FormData();
+
+                file_data.append("accion", "seo-page-update");
+                file_data.append("ID", "{ID_PAGE}");
+                file_data.append("formula", form);
+                
+                    for (var key of file_data.entries()) {
+                        console.log(key[0] + ', ' + key[1]);
+                    }
+                
+                $.ajax({
+                    type: "POST",
+                    url:  "{SERVER_URL}/admin/ajax/page.php",
+                    data: file_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $("#alert-resp-{ID_PAGE}").show();
+                        console.log(response);
+                        res = JSON.parse(response);
+                        console.log(res);
+                        
+                        if (res.code == 1) {
+                            $("#alert-resp-{ID_PAGE}").addClass("alert-success");
+                        }else{
+                            $("#alert-resp-{ID_PAGE}").addClass("alert-warning");
+                        }
+                        $("#alert-resp-{ID_PAGE}").html(res.msj);
+                        
+                        jQuery("#send-gif-{ID_PAGE}").addClass("invisible");
+                    }
+                });
+           
+        });
+
+
+        $("#{IMG-INPUT-ID}-up-btn").click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $("#send-gif-{ID_PAGE}").removeClass("invisible");
+            
+            $("#form-seo-{ID_PAGE} #box-img-resp").slideUp("");
+
+            var unform = $("form")[0];
+            var file_data = new FormData(unform);
+            file_data.append("accion", "update-header");
+            file_data.append("{IMG-INPUT-ID}", $("#{IMG-INPUT-ID}")[0].files[0]);
+            file_data.append("ID", "{ID_PAGE}");
+            for (var key of file_data.entries()) {
+            console.log(key[0] + ", " + key[1]);
+            }
+            $.ajax({
+            type: "POST",
+            url: "{SERVER_URL}/admin/ajax/page.php",
+            data: file_data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                $("#alert-resp-{ID_PAGE}").show();
+                console.log(response);
+                res = JSON.parse(response);
+                console.log(res);
+
+                if (res.code == 1) {
+                    $("#form-seo-{ID_PAGE} img").attr("src",res.img);
+                    console.log("IMG " + res.img);
+                    $("#alert-resp-{ID_PAGE}").addClass("alert-success");
+                    $("#form-seo-{ID_PAGE} #box-input-img").addClass("d-none");
+                    $("#form-seo-{ID_PAGE} #box-input-img").slideUp(250);
+                    $("#form-seo-{ID_PAGE} #box-img-act").slideDown(450);
+                    
+                    del_click();
+                } else {
+                    $("#alert-resp-{ID_PAGE}").addClass("alert-warning");
+                }
+                $("#alert-resp-{ID_PAGE}").html(res.msj);
+                $("#input-img-label").text("Select Header Image");
+                $("#{IMG-INPUT-ID}").val("");
+                $("#send-gif-{ID_PAGE}").addClass("invisible");
+                $("#form-seo-{ID_PAGE} #box-img-resp").slideDown("");
+
+            }
+            });
+        });
+
+
+        del_click();
+    });
+    </script>

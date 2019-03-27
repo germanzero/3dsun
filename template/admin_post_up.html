@@ -1,0 +1,254 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <div class="card">
+                <div class="card-header">{TITLE-FORM}</div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 class="text-justify">Write your post, either writing a draft in a single session or gradually word on parts of it.</h5>
+                    </div>
+                    <hr>
+                    <form action="" method="post" name="form-post" id="form-post">
+                            <div class="row form-group">
+                                <div class="col-12 text-right">
+                                    <div id="alert-resp" class="alert" role="alert" style="display:none;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-9 text-right">
+                                    <img id="send-gif" class="float-right invisible" src='{SERVER_URL}/images/loading-line.gif'>
+                                </div>
+                                <div class="col-3 text-right">
+                                    <button id="save-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                        <i class="fa fa-edit fa-lg"></i>&nbsp;
+                                        <span id="save-msj">Save post</span>
+                                        <span id="save-sending" style="display:none;">Sending…</span>
+                                    </button>
+                                </div> 
+                            </div>
+                        <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="title" class="control-label mb-1">Post Title</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="hidden" id="eid-post" name="eid-post" value="{EID}">
+                                <input id="title" name="title" value="{TITLE}" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="title here...">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="subtitle" class="control-label mb-1">Post Subtitle</label>
+                            </div>
+                            <div class="col-9">
+                                <input id="subtitle" name="subtitle" value="{SUBTITLE}" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="subtitle here...">
+                            </div>
+
+                        </div>
+                        {IMG-INPUT-PANEL}
+                        <div class="form-group">
+                            <h5 class="text-left">Content</h5>
+                            <div class="col-12 mt-3">
+                                 <textarea id="content" name="content" class="full-editor">{CONTENT}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="select_state" class=" form-control-label">Post status</label>
+                            </div>
+                            <div class="col-3">
+                                <select name="select_state" id="select_state" class="form-control">
+                                    <option value="Not published">Not published</option>
+                                    <option value="Published">Published</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <h3>SEO</h3>
+                        <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="page_title" class="control-label mb-1">Page Title</label>
+                            </div>
+                            <div class="col-9">
+                                <input id="page_title" name="page_title" type="text" value="{PAGE-TITLE}" class="form-control" aria-required="true" aria-invalid="false" placeholder="page title here...">
+                            </div>
+                        </div>
+                        
+                        <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="tags" class="control-label mb-1">META tags</label>
+                            </div>
+                            <div class="col-9">
+                                <input id="tags" name="tags" type="text" value="{META-TAGS}" class="form-control" aria-required="true" aria-invalid="false" placeholder="meta tags here...">
+                            </div>
+            
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="page_desc" class=" form-control-label">Description</label>
+                            </div>
+                            <div class="col-9">
+                                <textarea class="form-control" id="page_desc" name="page_desc">{PAGE-DESC}</textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-12 text-right">
+                                <div id="alert-resp" class="alert" role="alert" style="display:none;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-9 text-right">
+                                <img id="send-gif" class="float-right invisible" src='{SERVER_URL}/images/loading-line.gif'>
+                            </div>
+                            <div class="col-3 text-right">
+                                <button id="save-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                    <i class="fa fa-edit fa-lg"></i>&nbsp;
+                                    <span id="save-msj">Save post</span>
+                                    <span id="save-sending" style="display:none;">Sending…</span>
+                                </button>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+//Validate
+    function invalidate_input(id) {jQuery(id).addClass("is-invalid");jQuery(id).attr("required");$(id).popover("toggle");}
+    function validate_input(id) {jQuery(id).removeClass("is-invalid");jQuery(id).addClass("is-valid");$(id).popover("hide");}
+    function validate_reg() {
+        if (jQuery("#title").val() === "") { invalidate_input("#title"); return false;} 
+        else {validate_input("#title");}
+        if (jQuery("#subtitle").val() === "") {invalidate_input("#subtitle");return false;} 
+        else {validate_input("#subtitle");}
+        if (jQuery("#content").val() === "") {invalidate_input("#content");return false;} 
+        else {validate_input("#content");}
+        return true;
+      }
+
+//submit
+jQuery("#form-post").submit(function (e) {
+    $("#alert-resp").hide();
+        
+        e.preventDefault();
+        e.stopPropagation();
+        tinyMCE.triggerSave();
+        if(validate_reg()){
+
+            $("#send-gif").removeClass("invisible");
+            $("#msj-send").hide();
+            $("#msj-sending").show();
+            $("#btn-send").addClass("disabled");
+            $("#btn-send").attr("aria-disabled", "true");
+            
+            var form = jQuery("#form-post").serialize();
+            var file_data = new FormData();
+            file_data.append("accion", "update-post");
+            file_data.append("formula", form);
+      
+            $.ajax({
+                type: "POST",
+                url:  "{SERVER_URL}/admin/ajax/blog.php",
+                data: file_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $("#alert-resp").show();
+                    res = JSON.parse(response);
+                    if (res.code == 1) {
+                        $("#alert-resp").addClass("alert-success");
+                    }else{
+                        $("#alert-resp").addClass("alert-warning");
+                    }
+                    $("#alert-resp").html(res.msj);
+                        
+                    jQuery("#send-gif").addClass("invisible");
+                }
+            });
+
+
+        }
+   
+});
+
+  
+    
+  $(document).ready(function(e) {
+
+  
+  
+
+/*/////////////////////////////////////////////////////////////*/
+    $("#select_state").val("{STATUS}");
+
+    function del_click() {
+        $("#btn-del-hdr").click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $("#box-{IMG-INPUT-ID}").removeClass("d-none");
+        $("#box-act-{IMG-INPUT-ID}").slideUp(250);
+        $("#box-{IMG-INPUT-ID}").slideDown(450);
+        });
+    }
+
+    $("#box-{IMG-INPUT-ID}").addClass("{HDR-CLASS}");
+    $("#{IMG-INPUT-ID}-up-btn").click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $("#send-gif").removeClass("invisible");
+        
+        $("#box-img-resp").html("");
+
+        var unform = $("form")[0];
+        var file_data = new FormData(unform);
+        file_data.append("accion", "update-header");
+        file_data.append("{IMG-INPUT-ID}", $("#{IMG-INPUT-ID}")[0].files[0]);
+        file_data.append("eid-post", $("#eid-post").val());
+        for (var key of file_data.entries()) {
+        console.log(key[0] + ", " + key[1]);
+        }
+        $.ajax({
+        type: "POST",
+        url: "{SERVER_URL}/admin/ajax/blog.php",
+        data: file_data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            $("#alert-resp").show();
+            res = JSON.parse(response);
+
+            if (res.code == 1) {
+            $("#box-img-resp").html(res.img);
+            $("#alert-resp").addClass("alert-success");
+            $("#box-{IMG-INPUT-ID}").addClass("d-none");
+            $("#box-{IMG-INPUT-ID}").slideUp(250);
+            $("#box-act-{IMG-INPUT-ID}").slideDown(450);
+            
+            del_click();
+            } else {
+            $("#alert-resp").addClass("alert-warning");
+            }
+            $("#alert-resp").html(res.msj);
+            $("#input-img-label").text("Select Header Image");
+            $("#{IMG-INPUT-ID}").val("");
+            $("#send-gif").addClass("invisible");
+        }
+        });
+    });
+
+
+    del_click();
+});
+
+</script>
+<script src="{SERVER_URL}/js/admin/full-editor-init.js"></script>

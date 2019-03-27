@@ -1,0 +1,187 @@
+.btn {
+    cursor: pointer;
+}
+
+.bdr {
+    border: 1px solid yellowgreen;
+}
+
+
+/*Backs*/
+
+.bg-white {
+    background-color: #fff;
+}
+
+.bg-black {
+    background-color: #000000;
+}
+
+.bg-blue {
+    background-color: #64c6f3;
+}
+
+.bg-blue-d {
+    background-color: #16ABE2;
+}
+
+.bg-gray {
+    background-color: #F3F3F3;
+}
+
+.bg-gray-mid {
+    background-color: #706C6B;
+}
+
+.bg-gray-dark {
+    background-color: #212121;
+}
+
+.bg-magenta {
+    background-color: #E62D91;
+}
+
+.bg-yellow {
+    background-color: #F6EB3D;
+}
+
+/*bdrs*/
+
+.bb-m {
+    border-bottom: 5px solid #c9297e;
+}
+
+.bb-b {
+    border-bottom: 5px solid #1496c5;
+}
+
+.bb-y {
+    border-bottom: 5px solid #cfc535;
+}
+
+/*Colors*/
+
+.t-g {
+    color: #706C6B;
+}
+
+.t-gdl {
+    color: #212121;
+}
+
+.t-gd {
+    color: #706C6B;
+    font-weight: 600;
+}
+
+.t-gdd {
+    color: #706C6B;
+    font-weight: 700;
+}
+
+.t-y {
+    color: #F6EB3D;
+}
+
+.t-b {
+    color: #000000;
+}
+
+.t-m {
+    color: #E62D91;
+}
+
+.t-md {
+    color: #E62D91;
+    font-weight: 600;
+}
+
+.t-blu {
+    color: #16ABE2;
+}
+
+.t-w {
+    color: #FFF;
+}
+
+.t-wd {
+    color: #FFF;
+    font-weight: 600;
+}
+
+.cell_blog{
+    border: none;
+    padding: 1px;
+}
+
+
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+/* Example stylistic flourishes */
+
+.fileContainer {
+    float: left;
+}
+
+.fileContainer [type=file] {
+    cursor: pointer;
+}
+
+.prod-thumb{
+    height: 120px;
+}
+
+.prod-thumb img{
+    height: 100%;
+}
+
+.prod-thumb .buttons{
+    top: -32px;
+    position: relative;
+}
+
+.adm-caption{
+    top: -32px;
+    position: relative;
+}
+
+.item{
+    cursor: pointer;
+}
+
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.is-valid {
+    border-color: #35dc59;
+}
+
+.mceBlackBody{
+    
+}
+
+@media (max-width: 991px) {
+    .account-wrap {
+        position: absolute;
+        right: 0;
+        padding-right: 20px;
+    }
+}

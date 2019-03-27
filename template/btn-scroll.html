@@ -1,0 +1,64 @@
+<button onclick="scroll_back()" id="btn-scroll" title="Top">&uarr;</button>
+<script>
+    $(".section-menu-row a[href^='#']").on('click', function (e) {
+        // prevent default anchor click behavior
+        e.preventDefault();
+
+        // store hash
+        var hash = this.hash;
+        $(".section-menu-row a.active").removeClass("active");
+        $(this).addClass("active");
+
+        // animate
+        var toGo = $(hash).offset().top - 80;
+        $('html, body').animate({
+            scrollTop: toGo
+        }, 1000, function () {
+
+            // when done, add hash to url
+            // (default click behaviour)
+            // window.location.hash = hash;
+        });
+
+    });
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+        console.log("ST->" + document.documentElement.scrollTop);
+        scroll_rule()
+    };
+
+    function scroll_rule() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("btn-scroll").style.display = "block";
+        } else {
+            document.getElementById("btn-scroll").style.display = "none";
+        }
+
+        if (document.body.scrollTop > 747 || document.documentElement.scrollTop > 747) {
+            $('.section-menu').css('margin-top', '15px');
+        } else {
+            $('.section-menu').css('margin-top', '-50px');
+        }
+        /*   $(document).scroll(function() {
+               $('#menu').toggle($(this).scrollTop()>1000)
+           });​ */
+
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function scroll_back() {
+
+        $('html, body').animate({
+            scrollTop: 0
+        }, 1000, function () {
+
+        });
+
+
+
+
+    }
+
+
+</script>

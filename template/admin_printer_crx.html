@@ -1,0 +1,195 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+                <div class="card">
+                        <div class="card-header">Add Printer</div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5 class="text-justify">New UV-LED Printer® information.</h5>
+                            </div>
+                            <hr>
+                            <form action="" method="post" id="form-general" name="form-general" novalidate="novalidate">
+                                <div class="form-group">
+
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="name" class="control-label mb-1">Name</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="name" name="name" type="text" class="form-control" aria-required="true" aria-invalid="false" value=""
+                                            placeholder="name here...">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="subtitle" class="control-label mb-1">Short description</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="description_short" name="description_short" type="text" class="form-control" aria-required="true" aria-invalid="false" value=""
+                                            placeholder="short description here...">
+                                    </div>
+                                </div>
+
+
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="status" class=" form-control-label">Printer status</label>
+                                    </div>
+                                    <div class="col-3">
+                                        <select name="status" id="status" class="form-control">
+                                            <option value="enabled">Enabled</option>
+                                            <option value="disabled">Disabled</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="thick" class="control-label mb-1">Material Thickness</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="thick" name="thick" type="text" class="form-control" value="" aria-required="true" aria-invalid="false"
+                                            placeholder="Thickness here...">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="width" class="control-label mb-1">Printing Width</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea id="width" name="width" class="form-control simple-editor" placeholder="Printing width here..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="resolution" class="control-label mb-1">Resolution</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="resolution" name="resolution" type="text" class="form-control" value="" aria-required="true"
+                                            aria-invalid="false" placeholder="Resolution here...">
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="dimension" class="control-label mb-1">Dimensions</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea id="dimension" name="dimension" class="form-control simple-editor" placeholder="Dimensions here..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="weight" class="control-label mb-1">Weight</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea id="weight" name="weight" class="form-control simple-editor" placeholder="Weight here..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="message" class="control-label mb-1">Message mid page</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea id="message" name="message" class="form-control t-m simple-editor" placeholder="Text here..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="content" class="control-label mb-1">Description</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea class="editor full-editor" id="description" name="description"></textarea>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button id="save-button" type="submit" class="btn btn-success float-right">
+                                        <i class="fa fa-edit"></i>&nbsp;
+                                        <span id="save-button-text">Save</span>
+                                        <span id="save-button-sending" style="display:none;">Sending…</span>
+                                    </button>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 text-right">
+                                        <div id="alert-resp" class="alert" role="alert" style="display:none;">
+                                            
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 text-center">
+                                        <img id="send-gif" class="invisible" src="{SERVER_URL}/images/loading-line.gif" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<script>
+
+//general
+$("#form-general").submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tinyMCE.triggerSave();
+                $("#alert-resp").hide();
+                $("#save-button").hide();
+                $("#send-gif").removeClass("invisible");
+                $("#alert-resp").removeClass("alert-success").removeClass("alert-warning");
+                $("#msj-send").hide();
+                $("#msj-sending").show();
+                $("#btn-send").addClass("disabled").attr("aria-disabled", "true");
+                var form = $("#form-general").serialize();
+
+                var file_data = new FormData();
+
+                file_data.append("accion", "create-printer");
+                file_data.append("formula", form);
+                
+                $.ajax({
+                    type: "POST",
+                    url:  "{SERVER_URL}/admin/ajax/printer.php",
+                    data: file_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $("#alert-resp").show();
+                        res = JSON.parse(response);
+                        
+                        if(res.code==1){
+                            
+                            setTimeout(function(e){
+                                location.href = res.url;
+                            }, 500);
+                        }else{
+                            $("#save-button").show();
+                        }
+                        $("#alert-resp").html(res.msj);
+                        
+                        
+                        $("#send-gif").addClass("invisible");
+                    }
+                });
+           
+        });
+
+
+//load values
+$(document).ready(function (e) {
+       
+});
+
+</script>
+<script src="{SERVER_URL}/js/admin/simple-editor-init.js"></script>
+<script src="{SERVER_URL}/js/admin/full-editor-init.js"></script>

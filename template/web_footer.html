@@ -1,0 +1,582 @@
+<div class="container-fluid fixed-bottom pr-5 ">
+  <div
+    id="panel-sendus"
+    class=" col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-magenta bb-m w-75"
+  >
+    <form id="formcontact-f">
+      <div class="form-group row">
+        <div class="col-12 text-right">
+          <a class="btn btn-lg text-white">
+            <i class="fa fa-envelope mr-1"></i>
+            <span class="">SEND US A MESSAGE</span>
+            <i class="fa fa-angle-down ml-3"></i>
+          </a>
+        </div>
+        <div class="col-12 text-center"><hr /></div>
+      </div>
+      <div id="row-form-f">
+        <div class="form-group row">
+          <label for="Email" class="col-4 col-form-label text-left"
+            >Email *</label
+          >
+          <div class="col-sm-8">
+            <input
+              type="text"
+              class="form-control text-white"
+              id="con-email"
+              name="con-email"
+              value=""
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Name" class="col-4 col-form-label text-left"
+            >Name *</label
+          >
+          <div class="col-sm-8">
+            <input
+              type="text"
+              class="form-control text-white"
+              id="con-name"
+              name="con-name"
+              value=""
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Phone" class="col-4 col-form-label text-left"
+            >Phone</label
+          >
+          <div class="col-sm-8">
+            <input
+              type="text"
+              class="form-control text-white"
+              id="con-phone"
+              name="con-phone"
+              value=""
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Message" class="col-4 col-form-label text-left"
+            >Message *</label
+          >
+          <div class="col-sm-8">
+            <textarea
+              type="text"
+              class="form-control text-white"
+              id="con-msg"
+              name="con-msg"
+              value=""
+            ></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <img
+              id="send-gif"
+              class="float-right invisible"
+              src="{SERVER_URL}/images/loading-line.gif"
+            />
+          </div>
+        </div>
+        <div class="form-group row float-right">
+          <button
+            type="submit"
+            id="bt-sendus-go"
+            class="btn mb-2 text-right mr-5"
+          >
+            SEND
+          </button>
+        </div>
+      </div>
+      <div id="row-form-msg" class=""></div>
+    </form>
+  </div>
+  <div id="btn-sendus" class="float-right col-sm-12 col-md-6 col-lg-4 col-xl-3">
+    <a
+      href="#"
+      class="pt-2 pb-2 btn text-white rounded-0 text-right bg-magenta bb-m w-75"
+    >
+      <i class="fa fa-envelope mr-1"></i>
+      <span class="">SEND US A MESSAGE</span>
+      <i class="fa fa-angle-up ml-3"></i>
+    </a>
+  </div>
+</div>
+<div class="container-fluid bg-white p-0 ">
+  <div class="row p-0 m-0">
+    <div class="col mr-5">
+      <a href="#"
+        id="btn-down-brochure"
+        target="_blank"
+        class="btn bg-blue-d t-w bb-b btn-brochure rounded-0  p-2 float-right"
+      >
+        DOWNLOAD OUR PDF BROCHURE&nbsp; <i class="fa fa-angle-right ml-3"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="container-fluid bg-white pt-5 pb-5 ">
+  <div class="row pb-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-2  pl-4">
+      <img
+        src="{SERVER_URL}/images/footer/logo_footer.png"
+        alt="3D Sun Corporation"
+        class="img-responsive "
+      />
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-info-box">
+      <h5 class="">Address:</h5>
+      <p class="footer-text">
+        {ADDRESS_FOOTER}
+      </p>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-info-box">
+      <h5 class="">Contact:</h5>
+      <span class="footer-text">{PHONE_FOOTER}</span>
+      {EMAIL_FOOTER}
+      
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2  footer-info-box">
+      <h5 class="">Social Media:</h5>
+      <div class="row pb-3" id="snap">
+        <div class="col-2">
+          <a target="_blank" href="{FACEBOOK_URL}" class="social-effect">
+            <i class="fa fa-facebook fa-1 "></i>
+          </a>
+        </div>
+        <div class="col-2">
+          <a target="_blank" href="{TWITTER_URL}" class="social-effect ">
+            <i class="fa fa-twitter fa-1"></i>
+          </a>
+        </div>
+        <div class="col-2">
+          <a target="_blank" href="{INSTAGRAM_URL}" class="social-effect ">
+            <i class="fa fa-instagram fa-1"></i>
+          </a>
+        </div>
+        <div class="col-2">
+          <a
+            target="_blank"
+            href="{YOUTUBE_URL}"
+            class="social-effect animated"
+          >
+            <i class="fa fa-youtube fa-1"></i>
+          </a>
+        </div>
+        <!-- <div class="col-2">
+                            <a target="_blank" href="https://www.linkedin.com/company/" class="social-effect ">
+                                <i class="fa fa-linkedin fa-1"></i>
+                            </a>
+                        </div>
+                        -->
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2  footer-info-box">
+      <h5 class="">&copy; Copyright 2018</h5>
+
+      <div class="row">
+        <div class="col-12">
+          <p class="footer-text">
+            Sun3D Corporation. <br />
+            <span class="float-left footer-text">Design:</span>
+            <a
+              href="http://www.purplesolutionsve.com"
+              class="t-g"
+              target="_blank"
+              >Purple Solutions</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Download -->
+<div id="modal-brochure" class="modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title t-w">Download brochure</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" class="t-w">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="t-w">
+          We will send you the complete version of the brochure to the given
+          email address:
+        </p>
+        <input
+          id="email-brochure"
+          name="email-brochure"
+          type="text"
+          class="form-control"
+          placeholder="email here..."
+        />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="confirm-get-brochure"
+          data-id=""
+        >
+          Send
+        </button>
+      </div>
+      <div
+        id="alert-brochure"
+        class="alert alert-warning alert-dismissible w-100 m-0"
+        role="alert"
+      >
+        Verify email.
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Scripts on ready <script src="{SERVER_URL}/js/top.js"></script> -->
+<script type="text/javascript">
+  var SERVER_URL = "{SERVER_URL}";
+
+  $.fn.extend({
+    animateCss: function(animationName, callback) {
+      var animationEnd =
+        "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+      this.addClass("animated " + animationName).one(animationEnd, function() {
+        $(this).removeClass("animated " + animationName);
+        if (callback) {
+          callback();
+        }
+      });
+      return this;
+    }
+  });
+
+  // Running the code when the document is ready
+  $(document).ready(function() {
+    $("#alert-brochure").hide();
+    $("#alert-brochure").slideUp();
+    $("#alert-brochure button").click(function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $("#alert-brochure").hide();
+      $("#alert-brochure").slideUp();
+    });
+    $("#row-form-msg").hide(100);
+    $(".subnavbar").hover(
+      function() {
+        $("#" + $(this).attr("data-wich")).addClass(
+          "trg-" + $(this).attr("data-type")
+        );
+      },
+      function() {
+        $("#" + $(this).attr("data-wich")).removeClass(
+          "trg-" + $(this).attr("data-type")
+        );
+      }
+    );
+
+    $("#btn-sendus").click(function(e) {
+      e.preventDefault();
+      $(this).hide(function() {
+        $("#panel-sendus").slideDown("slow");
+      });
+    });
+
+    $("#confirm-get-brochure").on({
+      click: function(e) {
+        if (!validateEmail($("#email-brochure").val())) {
+          $("#alert-brochure").show();
+          $("#alert-brochure").slideDown(250);
+          return false;
+        }
+
+        var file_data = new FormData();
+        file_data.append("accion", "get-brochure");
+        file_data.append("email", $("#email-brochure").val());
+
+        $.ajax({
+          type: "POST",
+          url: SERVER_URL + "/web/server/contact.php",
+          data: file_data,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+            console.log(response);
+            $("#modal-brochure").modal("hide");
+          }
+        });
+      }
+    });
+
+    $("#btn-down-brochure").on({
+      click: function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("dwn brochure");
+        $("#modal-brochure").modal("show");
+      }
+    });
+
+    $("#panel-sendus a").click(function() {
+      $("#panel-sendus").slideUp(function() {
+        $("#btn-sendus").show("slow");
+        $("#row-form-f").slideDown(100);
+        $("#row-form-msg").slideUp(100);
+      });
+    });
+
+    //Effect on footers social icons
+    $(".social-effect")
+      .mouseenter(function() {
+        $(this).animateCss("fadeInUp");
+      })
+      .mouseleave(function() {
+        //Do something
+        //$(this).find("span").text("mouse leave");
+      });
+
+    $(".subnavbar").on({
+      mouseleave: function(e) {
+        $(".subnavbar").slideUp();
+      }
+    });
+
+
+    $(".dropdown").click(function(){
+        console.log("a5s4das42a4dsa2");
+        e.preventDefault();
+        e.stopPropagation();
+    });
+
+    $(".nav-item").on({
+      click: function(e) {
+        console.log("a5s4das42a4dsa2");
+        e.preventDefault();
+        e.stopPropagation();
+
+        $(".subnavbar").slideUp();
+
+        //$('.subnavbar').slideUp(100);
+        if ($(this).attr("data-param") == "parent") {
+          $("#subnavbar-" + $(this).attr("data-slug")).slideDown(350);
+          return true;
+        } else {
+          location.href = $(this).attr("href");
+        }
+      },
+      mouseenter: function(e) {
+        $(this)
+          .children("span")
+          .css("color", "#F6EB3D");
+        if (!$(this).is(":hover")) {
+          $(".subnavbar").slideUp();
+          $("#sendmail-top").slideDown(200);
+        }
+
+        //$(this).children("span").css("color","#F6EB3D");
+        //$('.subnavbar').slideUp();
+        //console.log("5");
+      },
+      mouseleave: function(e) {
+        $(this)
+          .children("span")
+          .css("color", "#FFF");
+        if ($(this).attr("data-param") == "parent") {
+          var name = "#subnavbar-" + $(this).attr("data-slug");
+
+          setTimeout(function() {
+            if ($(name + ":hover").length === 0 && $(this).length === 0) {
+              $(name).slideUp();
+              $("#sendmail-top").slideDown(200);
+            }
+            return true;
+          }, 500);
+        }
+      }
+    });
+
+    $("#send-gif-f").hide(100);
+    $("#show-helps").click(function() {
+      $("#formcontact-f input").popover("toggle");
+    });
+
+    function invalidate_input(id) {
+      jQuery(id).attr("required");
+      $(id).popover("toggle");
+    }
+    function validate_input(id) {
+      $(id).popover("hide");
+    }
+
+    function validate_msg() {
+      if (jQuery("#con-email-f").val() === "") {
+        invalidate_input("#con-email-f");
+        $("#con-email-f").focus();
+        return false;
+      } else {
+        validate_input("#con-email-f");
+      }
+      if (jQuery("#con-name-f").val() === "") {
+        invalidate_input("#con-name-f");
+        $("#con-name-f").focus();
+        return false;
+      } else {
+        validate_input("#con-name-f");
+      }
+      if (jQuery("#con-msg-f").val() === "") {
+        invalidate_input("#con-msg-f");
+        $("#con-msg-f").focus();
+        return false;
+      } else {
+        validate_input("#con-msg-f");
+      }
+
+      return true;
+    }
+
+    function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+    jQuery("#formcontact-f").submit(function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (validate_msg()) {
+        jQuery("#send-gif-f").show(100);
+        jQuery("#bt-sendus-go").addClass("disabled");
+        jQuery("#bt-sendus-go").attr("aria-disabled", "true");
+        var form = jQuery("#formcontact-f").serialize();
+
+        var file_data = new FormData();
+
+        file_data.append("accion", "contacto_web");
+        file_data.append("formula", form);
+
+        $.ajax({
+          type: "POST",
+          url: SERVER_URL + "/web/server/contact.php",
+          data: file_data,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+            res = JSON.parse(response);
+
+            if (res.code == 1) {
+              jQuery("#row-form-f").slideUp(100);
+              jQuery("#bt-sendus-go").removeClass("disabled");
+              jQuery("#bt-sendus-go").attr("aria-disabled", "false");
+              jQuery("#row-form-msg").html(res.msj);
+              jQuery("#row-form-msg").slideDown(200);
+            }
+
+            jQuery("#send-gif-f").hide(100);
+          }
+        });
+      }
+    });
+  });
+
+  $.fn.extend({
+    animateCss: function(animationName, callback) {
+      var animationEnd = (function(el) {
+        var animations = {
+          animation: "animationend",
+          OAnimation: "oAnimationEnd",
+          MozAnimation: "mozAnimationEnd",
+          WebkitAnimation: "webkitAnimationEnd"
+        };
+
+        for (var t in animations) {
+          if (el.style[t] !== undefined) {
+            return animations[t];
+          }
+        }
+      })(document.createElement("div"));
+
+      this.addClass("animated " + animationName).one(animationEnd, function() {
+        $(this).removeClass("animated " + animationName);
+
+        if (typeof callback === "function") callback();
+      });
+
+      return this;
+    }
+  });
+
+  function scroll_rule() {
+    if (
+      document.body.scrollTop > 200 ||
+      document.documentElement.scrollTop > 200
+    ) {
+      close_sendus();
+      $(".navbar").addClass("bg-gray-dark");
+    } else {
+      // close_sendus();
+      if ($(window).scrollTop() == 0) {
+        $("#btn-sendus").hide("slow");
+        $(".navbar").removeClass("bg-gray-dark");
+      }
+    }
+    /*
+      if (document.body.scrollTop > 747 || document.documentElement.scrollTop > 747) {
+          $('.section-menu').css('margin-top', '15px');
+      } else {
+          $('.section-menu').css('margin-top', '-50px');
+      }
+       $(document).scroll(function() {
+             $('#menu').toggle($(this).scrollTop()>1000)
+         });​ */
+  }
+
+  window.onscroll = function() {
+    //console.log("ST 2->" + document.documentElement.scrollTop);
+    scroll_rule();
+    $(".subnavbar").slideUp(200);
+    $("#sendmail-top").slideDown(200);
+  };
+
+  function close_sendus() {
+    $("#panel-sendus").slideUp(function() {
+      $("#btn-sendus").show("slow");
+    });
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function scroll_back() {
+    $("html, body").animate(
+      {
+        scrollTop: 0
+      },
+      1000,
+      function() {}
+    );
+  }
+
+  var SERVER_URL = "{SERVER_URL}";
+</script>

@@ -1,0 +1,234 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+
+                <p class="mb-3" id="myGroup">
+                        <a class="btn btn-primary" data-toggle="collapse" data-parent="#myGroup" href="#collapse_S1" role="button" aria-expanded="false"
+                            aria-controls="collapse_S1">
+                            Footer information
+                        </a>
+                        <a class="btn btn-primary" data-toggle="collapse" data-parent="#myGroup" href="#collapse_S2" role="button" aria-expanded="false"
+                            aria-controls="collapse_S2">
+                            Brochure
+                        </a>
+                        
+                    </p>
+                    <div class="accordion-group">
+        
+                        <div class="collapse" id="collapse_S1">
+                                <div class="card">
+                                        <div class="card-header">Footer Update</div>
+                                        <div class="card-body">
+                                            <div class="card-title">
+                                                <h5 class="text-justify">Update the information below.</h5>
+                                            </div>
+                                            <hr>
+                                            <form id="form-footer" name="form-footer" action="" method="post" novalidate="novalidate">
+                        
+                                                <div class="row form-group">
+                                                    <div class="col-12 text-left">
+                                                        <h4 for="title" class="control-label mb-1 t-blu"></h4>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                                <div class="row form-group">
+                                                    <div class="col-12 text-left">
+                                                            <h4 for="title" class="control-label mb-1 t-blu">Address</h4>
+                                                        </div>
+                                                    <div class="col-12 text-right">
+                                                        <input id="v-address" name="v-address" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="Facebook user here..." value="{ADDRESS}">
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-12 text-left">
+                                                        <h4 for="title" class="control-label mb-1 t-blu">Contact</h4>
+                                                    </div>
+                                                    <div class="col-3 text-right">
+                                                        <label for="v-phone" class="control-label mb-1">Phone</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <input id="v-phone" name="v-phone" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="Twitter user here..." value="{PHONE}">
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                        <div class="col-3 text-right">
+                                                            <label for="v-email" class="control-label mb-1">Contact mail addresses</label>
+                                                        </div>
+                                                        <div class="col-9">
+                                                            <h5 class="label">Separate each by (;)</h5>
+                                                            <input id="v-email" name="v-email" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="Twitter user here..." value="{EMAIL}">
+                                                        </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-6 text-left">
+                                                        <h4 for="title" class="control-label mb-1 t-blu"></h4>
+                                                    </div>
+                                                    <div class="col-6 text-right">
+                                                        <button id="payment-button" type="submit" class="btn btn-sm btn-success">
+                                                            <i class="fa fa-edit fa-lg"></i>&nbsp;
+                                                            <span id="payment-button-amount">Save</span>
+                                                            <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-10 text-right">
+                                                        <img id="send-gif" class="float-right invisible" src='{SERVER_URL}/images/loading-line.gif'>
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    
+                                                    <div class="col-12 text-right">
+                                                        <div id="alert-resp" style="display:none;">
+                                                            
+                                                        </div>
+                                                    </div>
+                        
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                        </div>
+        
+                        <div class="collapse" id="collapse_S2">
+                            <div class="card">
+                                <div class="card-header">Brochure</div>
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        <h5 class="text-justify">Update the brochure file.</h5>
+                                    </div>
+                                    
+                                    <hr>
+                                    
+                                    <form action="" id="form-s2" name="form-s2" method="post" data-id="s2" class="go-form" novalidate="novalidate">
+                                        <div class="row form-group">
+                                            <div class="col-12 text-right">
+                                                    <a class="btn btn-info" href="{SERVER_URL}/files/Home/SUN3D_brochure.pdf" role="button" target="_blank">
+                                                        View Brochure 
+                                                    </a>
+                                                    <a class="btn btn-info ml-2" href="{SERVER_URL}/files/Home/SUN3D_brochure.pdf" role="button" target="_blank" download>
+                                                        Download Brochure
+                                                    </a>
+                                                    <input type="hidden" id="EID-s2" name="EID-s2" value="{EID_S2}" >
+                                                    <img class="d-none send-gif-s2" src="{SERVER_URL}/images/loading-line.gif" />
+                                                    
+                                            </div>
+                                        </div>
+        
+                                        <div class="row form-group">
+        
+                                            <div class="col-3 text-right">
+                                                <label for="title-s2" class="control-label mb-1">File</label>
+                                            </div>
+                                            <div class="col-9">
+                                                {INPUT_FILE}
+                                            </div>
+        
+                                        </div>
+                                       
+                                        <div class="row form-group">
+                                            <div class="col-12 text-center">
+                                                <img class="d-none send-gif-s2" src="{SERVER_URL}/images/loading-line.gif" />
+                                                <div class="d-none alert-resp-s2" ></div>
+                                            </div>
+                                        </div>
+                                      
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+        
+        
+                    </div>
+
+
+
+
+
+
+            
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#input-brochure-alt").removeClass("d-inline").hide();
+
+
+        $("#form-footer").submit(function (e) {
+            $("#alert-resp").hide();
+            e.preventDefault();
+            e.stopPropagation();
+                $("#send-gif").removeClass("invisible");
+                $("#msj-send").hide();
+                $("#msj-sending").show();
+                $("#btn-send").addClass("disabled");
+                $("#btn-send").attr("aria-disabled", "true");
+                var form = jQuery("#form-footer").serialize();
+
+                var file_data = new FormData();
+
+                file_data.append("accion", "update-footer");
+                file_data.append("formula", form);
+                
+                    for (var key of file_data.entries()) {
+                        console.log(key[0] + ', ' + key[1]);
+                    }
+                
+                $.ajax({
+                    type: "POST",
+                    url:  "{SERVER_URL}/admin/ajax/settings.php",
+                    data: file_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $("#alert-resp").show();
+                        console.log(response);
+                        res = JSON.parse(response);
+                        console.log(res);
+                        $("#alert-resp").html(res.msj);
+                        jQuery("#send-gif").addClass("invisible");
+                    }
+                });
+           
+        });
+
+
+        $("#input-brochure-up-btn").click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var sec = $(this).parents('form').data("id");
+                var input_id = "input-brochure";
+                $(".send-gif-s2").removeClass("d-none");
+                
+            
+                var unform = $("#form-s2")[0];
+                var file_data = new FormData(unform);
+                file_data.append("accion", "upload-brochure");
+                file_data.append(input_id, $("#"+input_id)[0].files[0]);
+                
+                $.ajax({
+                type: "POST",
+                url: "{SERVER_URL}/admin/ajax/settings.php",
+                data: file_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    $(".alert-resp-s2").removeClass("d-none");
+                    console.log(response);
+                    res = JSON.parse(response);
+                    console.log(res);
+                    $("#"+input_id +"-label").text("Select Brochure");
+                    $("#"+input_id).val("");
+                    $(".alert-resp-s2").html(res.msj);
+                    $(".send-gif-s2").addClass("d-none");
+                }
+                });
+            });
+
+
+    });
+    </script>

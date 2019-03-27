@@ -1,0 +1,185 @@
+<div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-lg-12">
+            <div class="card">
+              <div class="card-header">FAQs</div>
+              <div class="card-body">
+                <div class="card-title">
+                  <h5 class="text-justify">
+                        Update the frequently asked questions
+                  </h5>
+                </div>
+                <hr />
+                <form action="" method="post" id="form-general" name="form-general" novalidate="novalidate">
+                            
+               
+                <div class="row form-group">
+                        <div class="col-3 text-right">
+                            <label for="thick" class="control-label mb-1">Question</label>
+                        </div>
+                        <div class="col-9">
+                            <input id="question" name="question" type="text" class="form-control" value="" aria-required="true" aria-invalid="false"
+                                placeholder="Question here...">
+                        </div>
+                    </div> 
+                    <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="thick" class="control-label mb-1">Url</label>
+                            </div>
+                            <div class="col-9">
+                                <input id="url" name="url" type="text" class="form-control" value="" aria-required="true" aria-invalid="false"
+                                    placeholder="Url here...">
+                            </div>
+                        </div>
+                    <div class="row form-group">
+                        <div class="col-3 text-right">
+                            <label for="width" class="control-label mb-1">Answer</label>
+                        </div>
+                        <div class="col-9">
+                            <textarea id="answer" name="answer" class="form-control" placeholder="Answer here..."></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="save-button" type="submit" class="btn btn-success float-right">
+                            <i class="fa fa-edit"></i>&nbsp;
+                            <span id="save-button-text">Save question</span>
+                            <span id="save-button-sending" style="display:none;">Sending…</span>
+                        </button>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-12 text-right">
+                            <div id="alert-resp" class="alert p-0" role="alert" style="display:none;">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-0 m-0">
+                        <div class="col-12 text-center">
+                            <img id="send-gif" class="invisible" src="{SERVER_URL}/images/loading-line.gif" />
+                        </div>
+                    </div> 
+                    </form>
+                </div>
+                <div class="accordion" id="accordionFAQ">{FAQS}</div>
+              
+            </div>
+        </div>
+    </div>
+</div>
+      
+<script>
+//Form
+$("#form-general").submit(function (e) {
+    $("#alert-resp").hide();
+    e.preventDefault();
+    e.stopPropagation();
+        $("#send-gif").removeClass("invisible");
+        $("#alert-resp").removeClass("alert-success").removeClass("alert-warning");
+        $("#msj-send").hide();
+        $("#msj-sending").show();
+        $("#btn-send").addClass("disabled").attr("aria-disabled", "true");
+        var form = $("#form-general").serialize();
+
+        var file_data = new FormData();
+
+        file_data.append("accion", "create-faq");
+        file_data.append("formula", form);
+        
+        $.ajax({
+            type: "POST",
+            url:  "{SERVER_URL}/admin/ajax/page.php",
+            data: file_data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                res = JSON.parse(response);
+                if (res.code == 1) {
+                    load_faqs();
+                    $("#question").val("");
+                    $("#url").val("");
+                    $("#answer").val("");
+                }
+                $("#alert-resp").html(res.msj).show();
+                
+                $("#send-gif").addClass("invisible");
+            }
+        });
+    
+});
+
+//faqs
+function load_faqs() {
+    $("#send-gif").removeClass("invisible");
+    var file_data = new FormData();
+    file_data.append("accion", "load-faqs");
+    $("#accordionFAQ").slideUp(250).delay(900);
+    
+    $.ajax({
+        type: "POST",
+        url: "{SERVER_URL}/admin/ajax/page.php",
+        data: file_data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            res = JSON.parse(response);
+            $("#accordionFAQ").html(res.faqs);
+            $("#send-gif").addClass("invisible");
+            $("#accordionFAQ").slideDown(250);
+            load_del_btn();
+        
+        }
+    });
+}
+
+//
+function load_del_btn(){
+        $(".del-faq-btn").click(function(e) {
+            $("#send-gif").removeClass("invisible");
+            $("#accordionFAQ").slideUp(250);
+            e.preventDefault();
+            e.stopPropagation();
+            var faq = $(this).attr("data-id");
+            var file_data = new FormData();
+            file_data.append("accion", "delete-faq");
+            file_data.append("ID-FAQ", faq);
+            
+            $.ajax({
+                type: "POST",
+                url: "{SERVER_URL}/admin/ajax/page.php",
+                data: file_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    res = JSON.parse(response);
+                    if (res.code == 1) {load_faqs();
+                    } else {$("#accordionFAQ").slideDown(250);}
+                    $("#alert-resp").html(res.msj).show();
+                    $("#send-gif").addClass("invisible");
+                }
+            });
+        
+        });
+    
+        
+}
+        
+//load values
+$(document).ready(function () {
+        $("i.fa").click(function () {
+
+            if ($(this).hasClass("fa-plus")) {
+                $(".fa.fa-minus").removeClass("fa-minus").addClass("fa-plus");
+                $(this).removeClass("fa-plus").addClass("fa-minus");
+
+            } else if ($(this).hasClass("fa-minus")) {
+                $(this).removeClass("fa-minus").addClass("fa-plus");
+            }
+
+        });
+        load_del_btn();
+
+    });
+</script>

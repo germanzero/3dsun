@@ -1,0 +1,162 @@
+<div class="container-fluid bg-gray p-0 {CLASS-BANNER}">
+    <div class="row p-0 m-0">
+        <div class="col-12 p-0">
+            <a href="{HREF-BANNER}" class="border-0" target="_blank">
+                <img id='img-ad-banner' class="img-responsive w-100" src='{PATH-BANNER}' alt="{ALT-BANNER}">
+            </a>    
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-gray">
+        <div class="row   home-video pt-5 pb-5 ml-5 mr-5">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <h1 class="mt-0 mr-lg-3 t-gdd title pl-2">{TITLE_SEC_1}</h1>
+                <h4 class=" mr-lg-3 t-gd subtitle pl-2">{SUBTITLE_SEC_1}</h4>
+                {PARAGRAF_SEC_1}
+                <br>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                {SLIDER_SEC_1}
+                <div class="row  pt-4">
+                    <div class="col-12 box-margin pt-3 ">
+                        <form class=" form-inline">
+                            <div class="box-registro col-12 p-0">
+                                <input type="text" class="form-control form-control-lg" id="email-sub" name="email-sub" placeholder="Email *" value="" data-container="body"
+                                    data-toggle="popover" data-placement="bottom" data-content="Ingrese su direcci&oacute;n de correo.">
+                                <button class="btn text-white form-control-lg" id="btn-sub" role="button">Subscribe &#62;</button>
+                            </div>
+                        </form>
+                        <img id='send-gif' class="d-none" src='{SERVER_URL}/images/loading-line.gif'>
+                        <div id="box-msj-sus"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container-fluid  bg-dark">
+    <div class="row">
+        <div class="col-12 p-0">
+            <div class="parallax">
+                <div class="t-y mt-0 pt-4 pb-4 text-center">
+                    <img height="65px" src='{SERVER_URL}/images/home/quote_left.png'>
+                    <h1 class="text-white message-text">{PARAGRAF_SEC_2}</h1>
+                    <h1 class="t-y message-text-auth">- {SUBTITLE_SEC_2}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid  bg-gray ">
+    <div class="row">
+        <div class="col-12  text-center pt-4">
+            <a href="{SERVER_URL}/web/applications.php" class="lnk-home-title-g">
+                <h1 id="" class="title-financial t-gdd">{TITLE_SEC_3}</h1>
+            </a>
+        </div>
+    </div>
+    <div class="row text-center pl-2 pr-2">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-apps pt-2 pl-5 pr-5">
+            {HOVER_BOXES_SEC_3}
+        </div>
+    </div>
+    <div class="row p-5">
+        <div class="col-12  text-center">
+            &nbsp;
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-gray-dark footer-top-bdr">
+    <div class="row   home-video pt-5 pb-5 ml-5 mr-5">
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-white">
+            <h1 class="mt-0 mr-lg-3 title pl-2">Latest from our Blog</h1>
+            {ROWS_BLOG}
+            <br>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-white">
+            <h1 class="mt-0 mr-lg-3 title pl-2">Latest Posts</h1>
+            <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+            <iframe src="http://lightwidget.com/widgets/468921b9e7a85bb49bae851cf266e06c.html" scrolling="no" allowtransparency="true"
+                class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+        </div>
+    </div>
+</div>
+{BTN-SCROLL}
+<script>
+
+    var lFollowX = 0,
+        lFollowY = 0,
+        x = 0,
+        y = 0,
+        friction = 1 / 30;
+
+    function moveBackground() {
+        x += (lFollowX - x) * friction;
+        y += (lFollowY - y) * friction;
+
+        translate = 'translate(' + x + 'px, ' + y + 'px) scale(1.1)';
+
+        $('.bg').css({
+            '-webit-transform': translate,
+            '-moz-transform': translate,
+            'transform': translate
+        });
+
+        window.requestAnimationFrame(moveBackground);
+    }
+
+    $(window).on('mousemove click', function (e) {
+
+        var lMouseX = Math.max(-100, Math.min(100, $(window).width() / 2 - e.clientX));
+        var lMouseY = Math.max(-100, Math.min(100, $(window).height() / 2 - e.clientY));
+        lFollowX = (20 * lMouseX) / 100; // 100 : 12 = lMouxeX : lFollow
+        lFollowY = (10 * lMouseY) / 100;
+
+    });
+
+    moveBackground();
+
+    $(function () {
+
+        $("#send-gif").hide(100);
+        $("#btn-suscribirse").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            //console.log("Email->" + $("#email_sus").val());
+
+            if ($("#email_sus").val() == null || $("#email_sus").val() === "") {
+                //console.log("Email undefined");
+                $("#email_sus").popover('show'); return;
+            }
+            else { $("#email_sus").popover('hide'); }
+
+            var file_data = new FormData();
+            file_data.append("accion", "suscribirse_web");
+            file_data.append("email", $("#email_sus").val());
+            /*
+                        for (var key of file_data.entries()) {
+                            console.log(key[0] + ', ' + key[1]);
+                        }
+            */
+            $.ajax({
+                type: "POST",
+                url: "{SERVER_URL}/web/server/contact.php",
+                data: file_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+                    res = JSON.parse(response);
+                    console.log(res);
+                    jQuery("#box-msj-sus").html(res.msj);
+                    jQuery("#btn-send").removeClass("disabled");
+                    jQuery("#btn-send").attr("aria-disabled", "false");
+                    jQuery("#send-gif").hide(100);
+                }
+            });
+        });
+    });
+
+</script>

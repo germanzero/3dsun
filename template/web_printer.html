@@ -1,0 +1,71 @@
+<div class="container-fluid  bg-gray-dark ">
+    <div class="row pt-2 pb-2 ml-5 mr-5 ">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right">
+            {PRINTERS_LINK}
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-gray footer-top-bdr">
+    <div class="row pt-5 pb-5 ml-5 mr-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 box-cont">
+
+            <h3 class="t-m title">{NAME}</h3>
+            <h3 class="t-gdd subtitle-xs">{DESC-SHORT}</h3>
+            <p class="text-justify mr-lg-3 t-g paragraf p-2">
+                <span class="t-gdd d-block">Material thickness:</span>
+                {MATERIAL-THICKNESS}
+                <br>
+                <br>
+                <span class="t-gdd d-block">Printing width:</span>
+                {PRINTING-WIDTH}
+                <br>
+                <br>
+                <span class="t-gdd d-block">Resolution:</span>
+                {RESOLUTION}
+                <br>
+                <br>
+                <span class="t-gdd d-block">Printer Dimensions:</span>
+                {DIMENSIONS}
+                <br>
+                <br>
+                <span class="t-gdd d-block">Printer weight Approximately:</span>
+                {WEIGHT}
+                <br>
+                <br>
+
+            </p>
+            <h3 class="t-m subtitle-xs">{MSJ-MID-PAGE}</h3>
+            <p class="t-g paragraf pt-3 text-justify">
+                {DESCRIPTION}
+            </p>
+            <br>
+
+
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 box-cont">
+            <div class="row p-2">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                   {SLIDER}
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
+                    <div id="youtube-vid" class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{YT-VIDEO-TAG}?rel=0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row pt-5 pb-5 ml-5 mr-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 box-cont">
+            <a href="{SERVER_URL}/web/contact_us.php?EID={EID}&TP=P" target="_blank" class="bg-magenta t-wd btn rounded-0 float-xl-right">
+                <span class="t-w">Request</span>
+                <i class="fa fa-angle-right ml-3 t-w "></i>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
+{BTN-SCROLL}

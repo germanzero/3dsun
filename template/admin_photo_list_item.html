@@ -1,0 +1,25 @@
+<div class="col-xs-6 col-sm-6 col-md-4 col-xl-2 mt-5" id="photo-box-{MEDIA_ID}">
+    <div class="thumbnail prod-thumb">
+        <input type="hidden" value="{MEDIA_URL}" id="HD_MEDIA_{MEDIA_ID}_URL" name="HD_MEDIA_{MEDIA_ID}_URL">
+        <img class="img-responsive w-100" src="{MEDIA_SRC}" alt="{MEDIA_ALT}" class="margin">
+        <div class="buttons ">
+            <a data-id="{MEDIA_ID}" class="btn btn-sm btn-danger rounded-0 float-left del-media-btn" role="button">
+                <i class="fa fa-ban"></i>
+            </a>
+            &nbsp;
+            <a href="{MEDIA_VER}" target="_blank" class="btn btn-sm btn-dark rounded-0 float-right" role="button">
+                <i class="fa fa-eye"></i>
+            </a>
+        </div>
+
+
+    </div>
+    <label class="adm-caption w-100 ml-2">
+        
+        <div class="w-100 ml-2d-inline">
+            Alt:<button data-id="{MEDIA_ID}"  type="button" class="btn badge badge-primary update-alt-media-btn">Update Alt</button> 
+            {MEDIA_ALT}
+        </div>
+    </label>
+    
+</div>

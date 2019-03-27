@@ -1,0 +1,29 @@
+<tr class="tr-shadow">
+        <td>
+            {ID}
+        </td>
+        <td>{TITLE}</td>
+        <td>
+            <span class="block-email">{AUTHOR}</span>
+        </td>
+        <td>{DATE}</td>
+        <td>
+            <span class="status--{ST_CLASS}">{STATUS}</span>
+        </td>
+        <td>
+            <div class="table-data-feature">
+                <a class="item" data-toggle="tooltip" data-placement="top" title="{ST_BTN_TITLE}">
+                    <i class="fa fa-cloud-{ST_BTN_ICON}"></i>
+                </a>
+                <a href="post_update.php?EID={EID}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                    <i class="zmdi zmdi-edit"></i>
+                </a>
+                <a class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                    <i class="zmdi zmdi-delete"></i>
+                </a>
+
+            </div>
+        </td>
+    </tr>
+
+    <tr class="spacer"></tr>

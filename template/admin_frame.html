@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>{PAGE-TITLE}</title>
+    
+    <!-- Favicon-->
+<link rel="apple-touch-icon" sizes="76x76" href="{SERVER_URL}/images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{SERVER_URL}/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{SERVER_URL}/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="{SERVER_URL}/images/favicon/site.webmanifest">
+<link rel="mask-icon" href="{SERVER_URL}/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+    <!-- Fontfaces CSS-->
+    <link href="{SERVER_URL}/css/admin/font-face.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{SERVER_URL}/admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{SERVER_URL}/admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/admin/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/admin/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{SERVER_URL}/css/admin/theme.css" rel="stylesheet" media="all">
+    <link href="{SERVER_URL}/css/admin/3dsun_admin.css" rel="stylesheet" media="all">
+
+    <!-- Jquery JS-->
+    <script src="{SERVER_URL}/admin/vendor/jquery-3.2.1.min.js"></script>
+
+    <!-- Include external JS libs. -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+    <!-- Include tinymce. -->
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ixi8krf2yf1yajew9zj3se75b5xpkuttve2sur8airsd9na1"></script>
+
+</head>
+
+<body class="animsition" onload="final_load()">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.php">
+                            <img src="{SERVER_URL}/images/footer/logo_footer.png" alt="3D Sun Admin" />
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a class="js-arrow closed" href="#">
+                                <i class="fas fa-tachometer-alt"></i>Content Management</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li class="has-sub">
+                                    <a class="js-arrow closed" href="#">
+                                        <i class="fas fa-sort"></i>Home</a>
+                                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                        <li>
+                                            <a href="video_header.php">
+                                                <i class="fas fa-film"></i>Video Header</a>
+                                        </li>
+                                        <li>
+                                            <a href="home_s1.php">
+                                                <i class="fas fa-edit"></i>Summary</a>
+                                        </li>
+                                        <li>
+                                            <a href="home_s2.php">
+                                                <i class="fas fa-comment"></i>Phrase</a>
+                                        </li>
+                                        <li>
+                                            <a href="home_s3.php">
+                                                <i class="fas fa-picture-o"></i>Photo Section</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a class="js-arrow sub-admin-menu" href="#">
+                                        <i class="fas fa-sort"></i>Products</a>
+                                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                        <li>
+                                            <a href="printer_ls.php">
+                                                <i class="fas fa-print"></i>UV LED Printers</a>
+                                        </li>
+                                        <li>
+                                            <a href="inks.php">
+                                                <i class="fas fa-tint"></i>Nano UV Inks</a>
+                                        </li>
+                                        <li>
+                                            <a href="laser_ls.php">
+                                                <i class="fas fa-tint"></i>Laser Machines</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a class="js-arrow sub-admin-menu" href="#">
+                                        <i class="fas fa-sort"></i>Opportunities</a>
+                                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                        <li>
+                                            <a href="applications.php">
+                                                <i class="fas fa-th"></i>Applications</a>
+                                        </li>
+                                        <li>
+                                            <a href="faq.php">
+                                                <i class="fas fa-question"></i>Questions</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </li>
+
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-archive"></i>News</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="post_crx.php">
+                                        <i class="fas fa-edit"></i>New Post</a>
+                                </li>
+                                <li>
+                                    <a href="post_ls.php">
+                                        <i class="fas fa-list"></i>Posts list</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-globe"></i>SEO and Header</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="seo.php">
+                                    <i class="fas fa-desktop"></i>Page Settings</a>
+                                </li>
+                                <li>
+                                    <a href="social.php">
+                                    <i class="fas fa-users"></i>Social Networks</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="index.php">
+                    <img src="{SERVER_URL}/images/footer/logo_footer.png" alt="3D Sun Admin" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="has-sub">
+                            <a class="js-arrow list-item" href="#">
+                                <i class="fas fa-desktop"></i>Content Management</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list ">
+                                <li class="has-sub">
+                                    <a class="js-arrow sub-admin-menu" href="#">
+                                        <i class="fas fa-sort"></i>Home</a>
+                                    <ul class="list-unstyled navbar__sub-list js-sub-list ">
+                                        <li>
+                                            <a href="video_header.php">
+                                            <i class="fas fa-film"></i>Video Header</a>
+                                        </li>
+                                        <li>
+                                            <a href="ad_banner.php">
+                                            <i class="fas fa-bookmark"></i>Advertising</a>
+                                        </li>
+                                        <li>
+                                            <a href="home_s1.php">
+                                            <i class="fas fa-edit"></i>Summary</a>
+                                        </li>
+                                        <li>
+                                            <a href="home_s2.php">
+                                                <i class="fas fa-comment"></i>Phrase</a>
+                                        </li>
+                                        <li>
+                                            <a href="home_s3.php">
+                                                <i class="fas fa-picture-o"></i>Photo Section</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a class="js-arrow sub-admin-menu" href="#">
+                                        <i class="fas fa-sort"></i>Products</a>
+                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <li>
+                                            <a href="printer_ls.php">
+                                                <i class="fas fa-print"></i>UV LED Printers</a>
+                                        </li>
+                                        <li>
+                                            <a href="inks.php">
+                                                <i class="fas fa-tint"></i>Nano UV Inks</a>
+                                        </li>
+                                        <li>
+                                            <a href="laser_ls.php">
+                                                <i class="fas fa-tint"></i>Laser Machines</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="has-sub">
+                                    <a class="js-arrow sub-admin-menu" href="#">
+                                        <i class="fas fa-sort"></i>Opportunities</a>
+                                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                        <li>
+                                            <a href="applications.php">
+                                                <i class="fas fa-th"></i>Applications</a>
+                                        </li>
+                                        <li>
+                                            <a href="faq.php">
+                                                <i class="fas fa-question"></i>Questions</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-archive"></i>News</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="post_crx.php">
+                                        <i class="fas fa-edit"></i>New Post</a>
+                                </li>
+                                <li>
+                                    <a href="post_ls.php">
+                                        <i class="fas fa-list"></i>Posts list</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-cogs"></i>WEB Settings</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="seo.php">
+                                        <i class="fas fa-globe"></i>SEO & Header</a>
+                                </li>
+                                <li>
+                                    <a href="mail_settings.php">
+                                        <i class="fas fa-envelope"></i>Mail Settings</a>
+                                </li>
+                                <li>
+                                    <a href="social.php">
+                                        <i class="fas fa-users"></i>Social Networks</a>
+                                </li>
+                                <li>
+                                    <a href="footer.php">
+                                        <i class="fas fa-desktop"></i>Footer</a>
+                                </li>
+                                
+                                            
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap2">
+                         
+                               <div class="header-button">
+                                
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu">
+                                        <div class="image d-none d-lg-block">
+                                            <img src="{SERVER_URL}/admin/images/dummy.png" alt="{UNAME}" />
+                                        </div>
+                                        <div class="content">
+                                            <a class="js-acc-btn" href="#">{UNAME}</a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="image">
+                                                    <a href="#">
+                                                        <img src="{SERVER_URL}/admin/images/dummy.png" alt="{UNAME}" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        <a href="#">{UNAME}</a>
+                                                    </h5>
+                                                    <span class="email d-block t-g">{UMAIL}</span>
+                                                    <span class="role d-block t-g">{ROLE}</span>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                           
+                                            </div>
+                                            <div class="account-dropdown__footer">
+                                                <a href="{SERVER_URL}/login/logout.php">
+                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    {CONTENT}
+                </div>
+
+            </div>
+            <!-- END MAIN CONTENT-->
+
+        </div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+
+
+    <!-- Bootstrap JS-->
+    <script src="{SERVER_URL}/admin/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="{SERVER_URL}/admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="{SERVER_URL}/admin/vendor/slick/slick.min.js">
+    </script>
+    <script src="{SERVER_URL}/admin/vendor/wow/wow.min.js"></script>
+    <script src="{SERVER_URL}/admin/vendor/animsition/animsition.min.js"></script>
+    <script src="{SERVER_URL}/admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="{SERVER_URL}/admin/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="{SERVER_URL}/admin/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="{SERVER_URL}/admin/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="{SERVER_URL}/admin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="{SERVER_URL}/admin/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="{SERVER_URL}/admin/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS -->
+    <script src="{SERVER_URL}/js/admin/main.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".mg-editor .fr-element").css('background-color', '#E62D91');
+            $(".gdd-editor .fr-element").css('background-color', '#212121');
+            $(".y-editor .fr-element").css('background-color', '#F6EB3D');
+
+        });
+
+        $('.collapse').on('show.bs.collapse', function () {
+            $('.collapse').collapse('hide');
+        });
+        
+        function final_load(){
+            $(".y-editor iframe").contents().find("#tinymce.mce-content-body").css('background-color', '#F6EB3D');
+            $(".mg-editor iframe").contents().find("#tinymce.mce-content-body").css('background-color', '#E62D91');
+            $(".gdd-editor iframe").contents().find("#tinymce.mce-content-body").css('background-color', '#212121');
+        }  
+
+    </script>
+</body>
+
+</html>
+<!-- end document-->

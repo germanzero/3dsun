@@ -1,0 +1,264 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <h4>Update Laser Machine: {NAME}</h4>
+            <br>
+            <p class="mb-3" id="myGroup">
+                <a class="btn btn-primary" data-toggle="collapse" data-parent="#myGroup" href="#collapse_S1" role="button" aria-expanded="false"
+                    aria-controls="collapse_S1">
+                    General
+                </a>
+                <a class="btn btn-primary" data-toggle="collapse" data-parent="#myGroup" href="#collapse_S2" role="button" aria-expanded="false"
+                    aria-controls="collapse_S2">
+                    Multimedia
+                </a>
+
+
+            </p>
+            <div class="accordion-group">
+                <div class="collapse" id="collapse_S1">
+                    <div class="card">
+                        <div class="card-header">Update Laser Machine</div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5 class="text-justify">Update Laser cutting Machine information.</h5>
+                            </div>
+                            <hr>
+                            <form action="" method="post" id="form-general" name="form-general" novalidate="novalidate">
+                                <div class="form-group">
+
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="name" class="control-label mb-1">Name</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="name" name="name" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{NAME}"
+                                            placeholder="name here...">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="status" class=" form-control-label">Status</label>
+                                    </div>
+                                    <div class="col-3">
+                                        <select name="status" id="status" class="form-control">
+                                            <option value="enabled">Enabled</option>
+                                            <option value="disabled">Disabled</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="subtitle" class="control-label mb-1">Short description</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea class="editor simple-editor" id="short-description" name="description">{SHORT_DESC}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="subtitle" class="control-label mb-1">Content</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea class="editor full-editor" id="description" name="description">{DESC}</textarea>
+                                    </div>
+                                </div>
+
+
+                                
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="technical" class="control-label mb-1">Technical Parameters</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea class="editor full-editor" id="technical" name="technical">{TECHNICAL}</textarea>
+                                    </div>
+                                </div>
+                               
+
+                                <div>
+                                    <button id="save-button" type="submit" class="btn btn-success float-right">
+                                        <i class="fa fa-edit"></i>&nbsp;
+                                        <span id="save-button-text">Save</span>
+                                        <span id="save-button-sending" style="display:none;">Sending…</span>
+                                    </button>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 text-right">
+                                            <img id="send-gif" class="" src="{SERVER_URL}/images/loading-line.gif" />
+                                            <div id="alert-resp" style="display:none;">
+                                            
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse" id="collapse_S2">
+                    <div class="card">
+                        <div class="card-header">Multimedia - (Laser S2)</div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5 class="text-justify">Include video and pictures for this printer page.</h5>
+                            </div>
+                            <hr>
+                            {IMG-INPUT-PANEL}
+                         
+                             <div class="row form-group m-0">
+                                    <div class="col-12 text-center">
+                                        <img id="send-gif-b" class="" src="{SERVER_URL}/images/loading-line.gif" />
+                                        <div id="alert-resp-b" class="p-0 m-0">
+                                            
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                                <hr>
+                                 
+                               
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+
+//general
+$("#form-general").submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tinyMCE.triggerSave();
+                $("#alert-resp").hide();
+                $("#send-gif").show().removeClass("invisible");
+                $("#msj-send").hide();
+                $("#btn-send").addClass("disabled").attr("aria-disabled", "true");
+                
+                //$("#description").val($("#description").val().replace("\r\n","<br>"));
+                
+                //var weight = $("#weight").val();
+                //console.log("weight " + weight);
+                //$("#weight").val(weight.replace(/(?:\\[rn]|[\r\n]+)+/g, "<br>"));
+               
+                var form = $("#form-general").serialize();
+                
+                var file_data = new FormData();
+
+                file_data.append("accion", "update-laser");
+                file_data.append("EID", "{EID}");
+                file_data.append("formula", form);
+                for (var key of file_data.entries()) {
+                    console.log(key[0] + ', ' + key[1]);
+                }
+            
+                $.ajax({
+                    type: "POST",
+                    url:  "{SERVER_URL}/admin/ajax/laser.php",
+                    data: file_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        $("#alert-resp").show();
+                        res = JSON.parse(response);
+                        $("#alert-resp").html(res.msj);
+                        $("#send-gif").hide();
+                    }
+                });
+           
+        });
+
+
+
+
+ 
+
+    function load_del_btn(){
+        $(".del-media-btn").click(function(e) {
+        $("#send-gif").removeClass("invisible");
+        e.preventDefault();
+        e.stopPropagation();
+        var slider = $(this).attr("data-id");
+        var file_data = new FormData();
+        file_data.append("accion", "delete-photo");
+        
+        $.ajax({
+            type: "POST",
+            url: "{SERVER_URL}/admin/ajax/printer.php",
+            data: file_data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+            res = JSON.parse(response);
+            if (res.code == 1) {load_photos();$("#alert-resp-p").addClass("alert-success");
+            } else {$("#alert-resp-p").addClass("alert-warning");}
+            $("#alert-resp-p").html(res.msj);
+            }
+        });
+        
+        });
+    
+        
+    }
+
+//Banner
+$("#{INPUT-ID-BANNER}-up-btn").click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $("#send-gif-b").show();
+        
+            var unform = $("#form-pictures")[0];
+            var file_data = new FormData(unform);
+            file_data.append("accion", "upload-banner");
+            file_data.append("{INPUT-ID-BANNER}", $("#{INPUT-ID-BANNER}")[0].files[0]);
+            file_data.append("EID", "{EID}");
+            file_data.append("{INPUT-ID-BANNER}-alt", $("#{INPUT-ID-BANNER}-alt").val());
+        
+            $.ajax({
+              type: "POST",
+              url: "{SERVER_URL}/admin/ajax/printer.php",
+              data: file_data,
+              cache: false,
+              contentType: false,
+              processData: false,
+              success: function(response) {
+                $("#alert-resp-b").show();
+                res = JSON.parse(response);
+                $("#{INPUT-ID-BANNER}-label").text("Upload New Image");
+                $("#{INPUT-ID-BANNER}").val("");
+                if (res.code == 1) {
+                    $("#box-act-{INPUT-ID-BANNER} img").attr("src",res.url);
+                } 
+                $("#box-{INPUT-ID-BANNER}").slideUp(100);
+                $("#box-act-{INPUT-ID-BANNER}").slideDown(250);
+                $("#alert-resp-b").html(res.msj);
+                $("#send-gif-b").hide();
+              }
+            });
+          });   
+
+//load values
+$(document).ready(function (e) {
+    console.log("values loaded");
+    $("#status").val("{STATUS}");
+    $("#box-{INPUT-ID-BANNER}").addClass("{HDR-CLASS}");
+    $("#send-gif").hide();
+    $("#send-gif-b").hide();
+    $("#alert-resp-b").hide();
+
+});
+
+
+</script>
+<script src="{SERVER_URL}/js/admin/simple-editor-init.js"></script>
+<script src="{SERVER_URL}/js/admin/full-editor-init.js"></script>
+

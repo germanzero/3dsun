@@ -1,0 +1,105 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <div class="card">
+                <div class="card-header">Phrase - Section 2 (Home S2)</div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 class="text-justify">Update the author phrase on the web.</h5>
+                    </div>
+                    <hr>
+                    <div class="row form-group m-0 p-0">
+                            <div class="col-12 text-center">
+                              <img id="save-gif" class="invisible" src="{SERVER_URL}/images/loading-line.gif"/>
+                            </div>
+                          </div>
+                    <form action="" method="post" id="formula" name="formula">
+
+                        <div class="row form-group">
+                            <div class="col-9 text-center">
+                                    <div id="save-resp" class="alert invisible ml-4" role="alert" ></div>
+                            </div>
+                            <div class="col-3 text-center">
+                                <button type="submit" class="btn btn-sm btn-info save-button">
+                                    <i class="fa fa-edit fa-lg"></i>&nbsp;
+                                    <span id="save-button-txt">Save S2</span>
+                                    <span id="save-button-sending" class="invisible">Sending…</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="row form-group">
+
+                            <div class="col-3 text-right">
+                                <label for="subtitle" class="control-label mb-1">Author</label>
+                            </div>
+                            <div class="col-9">
+                                <input id="subtitle" name="subtitle" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="Author name here..." value="{SUBTITLE}">
+                                <input type="hidden" id="EID-SECTION" name="EID-SECTION" value="{EID-SECTION}" />
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-3 text-right">
+                                <label for="file-input" class=" form-control-label">Phrase</label>
+                            </div>
+                            <div class="col-9">
+                                <textarea id="paragraf" name="paragraf" class="mid-editor">{PARAGRAF}</textarea>
+
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-12 text-right">
+                                    <button type="submit" class="btn btn-sm btn-info save-button">
+                                            <i class="fa fa-edit fa-lg"></i>&nbsp;
+                                            <span id="save-button-txt">Save S2</span>
+                                            <span id="save-button-sending" class="invisible">Sending…</span>
+                                        </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+$( document ).ready(function(){
+
+    $(".save-button").click(function(e) {
+        tinyMCE.triggerSave();
+        e.preventDefault();
+        e.stopPropagation();
+        $("#save-gif").removeClass("invisible");
+        var unform = $("#formula").serialize();
+        var file_data = new FormData();
+        file_data.append("accion", "save-s2");
+        file_data.append("formula", unform);
+        $("#formula div").slideUp(350);
+        $.ajax({
+        type: "POST",
+        url: "{SERVER_URL}/admin/ajax/home.php",
+        data: file_data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            console.log(response);
+            res = JSON.parse(response);
+            console.log(res);
+            $("#formula div").slideDown(350);
+            $("#save-resp").html(res.msj);
+            $("#save-resp").removeClass("invisible");
+            $("#save-gif").addClass("invisible");
+            }
+        });
+    });
+
+
+});
+</script>
+<script src="{SERVER_URL}/js/admin/mid-editor-init.js"></script>

@@ -1,0 +1,449 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <p class="mb-3" id="myGroup">
+                <a class="btn btn-primary" data-toggle="collapse" data-parent="#myGroup" href="#collapse_S1" role="button" aria-expanded="false"
+                    aria-controls="collapse_S1">
+                    {TITLE_S1}
+                </a>
+                <a class="btn btn-primary" data-toggle="collapse" data-parent="#myGroup" href="#collapse_S2" role="button" aria-expanded="false"
+                    aria-controls="collapse_S2">
+                    {TITLE_S2}
+                </a>
+                <a class="btn btn-primary" data-toggle="collapse" data-parent="#myGroup" href="#collapse_S3" role="button" aria-expanded="false"
+                    aria-controls="collapse_S3">
+                    {TITLE_S3}
+                </a>
+                <a class="btn btn-primary" data-toggle="collapse" data-parent="#myGroup" href="#collapse_S4" role="button" aria-expanded="false"
+                    aria-controls="collapse_S3">
+                    {TITLE_S4}
+                </a>
+                <a class="btn btn-info float-right" href="{SERVER_URL}/web/applications.php" role="button" target="_blank">
+                    View 'Applications' on WEB
+                </a>
+
+            </p>
+            <div class="accordion-group">
+
+                <div class="collapse" id="collapse_S1">
+                    <div class="card">
+                        <div class="card-header">{TITLE_S1} - Section 1 (Apps S1)</div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5 class="text-justify">Update the first section of 'Applications' page.</h5>
+                            </div>
+                            <hr>
+                            <form action="" id="form-s1" name="form-s1" method="post" data-id="s1" class="go-form" novalidate="novalidate">
+                                <div class="row form-group">
+                                    <div class="col-12 text-right">
+                                            <input type="hidden" id="EID-s1" name="EID-s1" value="{EID_S1}" >
+                                            <img class="d-none send-gif-s1" src="{SERVER_URL}/images/loading-line.gif" />
+                                            <div id="alert-resp-s1" style="display:none;" ></div>
+                                            <button id="save-btn-s1" type="submit" class="btn btn-success mt-2 float-right pt-1">
+                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                    <span id="save-button-text">Save</span>
+                                                    <span id="save-button-sending" style="display:none;">Sending…</span>
+                                            </button>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+
+                                    <div class="col-3 text-right">
+                                        <label for="title-s1" class="control-label mb-1">Title</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="title-s1" name="title-s1" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{TITLE_S1}"
+                                            placeholder="Title section here...">
+                                    </div>
+
+                                </div>
+                                <div class="row form-group">
+
+                                    <div class="col-3 text-right">
+                                        <label for="subtitle-s1" class="control-label mb-1">Subtitle</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="subtitle-s1" name="subtitle-s1" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{SUBTITLE_S1}"
+                                            placeholder="Subtitle section here...">
+                                    </div>
+
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="file-input" class=" form-control-label">Content</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea id="paragraf-s1" name="paragraf-s1" class="mid-editor">{PARAGRAF_S1}</textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse" id="collapse_S2">
+                    <div class="card">
+                        <div class="card-header">{TITLE_S2} - Section 2 (Apps S2)</div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5 class="text-justify">Update the second section of 'Applications' page.</h5>
+                            </div>
+                            <hr>
+                            <form action="" id="form-s2" name="form-s2" method="post" data-id="s2" class="go-form" novalidate="novalidate">
+                                <div class="row form-group">
+                                    <div class="col-12 text-right">
+                                            <input type="hidden" id="EID-s2" name="EID-s2" value="{EID_S2}" >
+                                            <img class="d-none send-gif-s2" src="{SERVER_URL}/images/loading-line.gif" />
+                                            <button id="save-btn-s2" type="submit" class="btn btn-success  mt-2 sfloat-right pt-1">
+                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                    <span id="save-button-text">Save</span>
+                                                    <span id="save-button-sending" style="display:none;">Sending…</span>
+                                            </button>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+
+                                    <div class="col-3 text-right">
+                                        <label for="title-s2" class="control-label mb-1">Title Section</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="title-s2" name="title-s2" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{TITLE_S2}"
+                                            placeholder="Title section here...">
+                                    </div>
+
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="file-input" class=" form-control-label">Content</label>
+                                    </div>
+                                    <div class="col-9 y-editor">
+                                        <textarea id="paragraf-s2" name="paragraf-s2" class="mid-editor">{PARAGRAF_S2}</textarea>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="file-input" class=" form-control-label">Photos</label>
+                                    </div>
+                                    <div class="col-9">
+                                        {IMG_INPUT_S2}
+                                            
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-12 text-center">
+                                        <img class="d-none send-gif-s2" src="{SERVER_URL}/images/loading-line.gif" />
+                                        <div id="alert-resp-s2"></div>
+                                    </div>
+                                </div>
+                                <div id="photos-box-s2" data-section="s2" class="row form-group">
+                                    {PHOTOS_S2}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse" id="collapse_S3">
+                    <div class="card">
+                        <div class="card-header">{TITLE_S3} - Section 3 (Apps S3)</div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5 class="text-justify">Update the third section of 'Applications' page.</h5>
+                            </div>
+                            <hr>
+                            <form action="" id="form-s3" name="form-s3" method="post" data-id="s3" class="go-form" novalidate="novalidate">
+                                <div class="row form-group">
+                                    <div class="col-12 text-right">
+                                            <input type="hidden" id="EID-s3" name="EID-s3" value="{EID_S3}" >
+                                            <img class="d-none send-gif-s3" src="{SERVER_URL}/images/loading-line.gif" />
+                                            <button id="save-btn-s3" type="submit" class="btn  mt-2 btn-success float-right pt-1">
+                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                    <span id="save-button-text">Save</span>
+                                                    <span id="save-button-sending" style="display:none;">Sending…</span>
+                                            </button>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+
+                                    <div class="col-3 text-right">
+                                        <label for="title-s3" class="control-label mb-1">Title Section</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="title-s3" name="title-s3" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{TITLE_S3}"
+                                            placeholder="Title section here...">
+                                    </div>
+
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="file-input" class=" form-control-label">Content</label>
+                                    </div>
+                                    <div class="col-9 gdd-editor">
+                                        <textarea id="paragraf-s3" name="paragraf-s3" class="mid-editor">{PARAGRAF_S3}</textarea>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="file-input" class=" form-control-label">Photos</label>
+                                    </div>
+                                    <div class="col-9">
+                                        {IMG_INPUT_S3}
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                        <div class="col-12 text-center">
+                                            <img class="d-none send-gif-s3" src="{SERVER_URL}/images/loading-line.gif" />
+                                            <div id="alert-resp-s3" class="d-none" ></div>
+                                        </div>
+                                    </div>
+                                <div id="photos-box-s3" class="row form-group">
+                                    {PHOTOS_S3}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse" id="collapse_S4">
+                    <div class="card">
+                        <div class="card-header">{TITLE_S4} - Section 4 (Apps S4)</div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h5 class="text-justify">Update the fourth section of 'Applications' page.</h5>
+                            </div>
+                            <hr>
+                            <form action="" id="form-s4" name="form-s4" method="post" data-id="s4" class="go-form" novalidate="novalidate">
+                                <div class="row form-group">
+                                    <div class="col-12 text-right">
+                                            <input type="hidden" id="EID-s4" name="EID-s4" value="{EID_S4}" >
+                                            <img id="send-gif-s4" class="invisible" src="{SERVER_URL}/images/loading-line.gif" />
+                                            <button id="save-btn-s4" type="submit" class="btn btn-success float-right mt-2">
+                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                    <span id="save-button-text">Save</span>
+                                                    <span id="save-button-sending" style="display:none;">Sending…</span>
+                                            </button>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+
+                                    <div class="col-3 text-right">
+                                        <label for="title-s4" class="control-label mb-1">Title Section</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input id="title-s4" name="title-s4" type="text" class="form-control" aria-required="true" aria-invalid="false" value="{TITLE_S4}"
+                                            placeholder="Title section here...">
+                                    </div>
+
+                                </div>
+                                <div class="row form-group">
+                                        <div class="col-3 text-right">
+                                            <label for="paragraf-s4" class=" form-control-label">Content</label>
+                                        </div>
+                                        <div class="col-9 y-editor">
+                                            <textarea id="paragraf-s4" name="paragraf-s4" class="mid-editor">{PARAGRAF_S4}</textarea>
+                                        </div>
+                                    </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <div class="col-3 text-right">
+                                        <label for="file-input" class=" form-control-label">Photos</label>
+                                    </div>
+                                    <div class="col-9">
+                                        {IMG_INPUT_S4}
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                        <div class="col-12 text-center">
+                                            <img class="d-none send-gif-s4" src="{SERVER_URL}/images/loading-line.gif" />
+                                            <div id="alert-resp-s4" class="d-none" ></div>
+                                        </div>
+                                    </div>
+                                <div id="photos-box-s4" class="row form-group">
+                                    {PHOTOS_S4}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //general
+    $(".go-form").submit(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        tinyMCE.triggerSave();
+        var sec = $(this).data("id");
+            $("#alert-resp-" + sec).hide();
+            $(".send-gif-" + sec).removeClass("invisible");
+            $("#msj-send-" + sec).hide();
+            $("#msj-sending-" + sec).show();
+            $("#save-btn-" + sec).addClass("disabled").attr("aria-disabled", "true");
+            var form = $("#form-" + sec).serialize();
+            var file_data = new FormData();
+            file_data.append("accion", "update-section");
+            file_data.append("EID", $("#EID-" + sec).val());
+            file_data.append("SECTION", sec);
+            file_data.append("formula", form);
+            
+            $.ajax({
+                type: "POST",
+                url:  "{SERVER_URL}/admin/ajax/applications.php",
+                data: file_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $("#alert-resp-" + sec).show();
+                    res = JSON.parse(response);
+                    $("#alert-resp-" + sec).html(res.msj);
+                    $(".send-gif-" + sec).addClass("invisible");
+                }
+            });
+            
+    });
+
+//photos
+    $(".upload-btn-input").click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var sec = $(this).parents('form').data("id");
+                var input_id = "{INPUT-ID}-" + sec;
+                $(".send-gif-" + sec).removeClass("invisible");
+            
+                var unform = $("#form-" + sec)[0];
+                var file_data = new FormData(unform);
+                file_data.append("accion", "upload-photo");
+                file_data.append(input_id, $("#"+input_id)[0].files[0]);
+                file_data.append("EID", $("#EID-" + sec).val());
+                file_data.append("SECTION", sec);
+                file_data.append(input_id + "-alt", $("#"+input_id + "-alt").val());
+
+                $.ajax({
+                type: "POST",
+                url: "{SERVER_URL}/admin/ajax/applications.php",
+                data: file_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    $("#alert-resp-" + sec).show();
+                    res = JSON.parse(response);
+                    $("#"+input_id +"-label").text("Upload New Image");
+                    $("#"+input_id).val("");
+                    if (res.code == 1) {load_photos(sec);}
+                    $("#alert-resp-" + sec).html(res.msj);
+                    $(".send-gif-" + sec).addClass("invisible");
+                }
+                });
+            });
+                
+    function load_photos(sec) {
+            $(".send-gif-"+sec).removeClass("invisible");
+            $("#photos-box-" + sec).slideUp(250).delay(900);
+
+            var file_data = new FormData();
+            file_data.append("accion", "load-photos");
+            file_data.append("EID", $("#EID-" + sec).val());
+            
+            $.ajax({
+            type: "POST",
+            url: "{SERVER_URL}/admin/ajax/applications.php",
+            data: file_data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                res = JSON.parse(response);
+                $("#photos-box-" + sec).html(res.photos);
+                $(".send-gif-" + sec).addClass("invisible");
+                //$("#photo-box-" + slider).remove();
+                $("#photos-box-" + sec).slideDown(250);
+                load_del_btn(sec);
+            }
+            });
+        }
+
+    function load_del_btn(){
+        $(".del-media-btn").click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var slider = $(this).attr("data-id");
+        var section = $(this).closest("#photos-box-s2").attr("data-section");
+        $(".send-gif-" + section).removeClass("invisible");
+        console.log("ID-SLIDER->"+slider);
+        console.log("section->"+section);
+        var file_data = new FormData();
+        file_data.append("accion", "delete-photo");
+        file_data.append("ID-SLIDER", slider);
+
+            $.ajax({
+                type: "POST",
+                url: "{SERVER_URL}/admin/ajax/applications.php",
+                data: file_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    res = JSON.parse(response);
+                    console.log(res);
+                    if (res.code == 1) {load_photos(section);}
+                    $("#alert-resp-" + section).show();
+                    $("#alert-resp-" + section).html(res.msj);
+                }
+            });
+        
+        });
+    
+        $(".update-alt-media-btn").click(function(e) {
+            var theSEC = $(this).closest("#photos-box-s2").attr("data-section");
+            console.log("together "+theSEC);
+            $(".send-gif-" + theSEC).removeClass("invisible");
+            e.preventDefault();
+            e.stopPropagation();
+            var slider = $(this).attr("data-id");
+            var file_data = new FormData();
+            file_data.append("accion", "update-alt-photo");
+            file_data.append("ID-SLIDER", slider);
+            file_data.append("ALT-TEXT", $("#alt-text-"+slider).val());
+            for (var key of file_data.entries()) {
+            console.log(key[0] + ", " + key[1]);
+            }
+            $.ajax({
+                type: "POST",
+                url: "{SERVER_URL}/admin/ajax/applications.php",
+                data: file_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    res = JSON.parse(response);
+                    $("#alert-resp-" + theSEC).removeClass("d-none").html(res.msj);
+                    $(".send-gif-" + theSEC).addClass("invisible");
+                }
+            });
+            
+        });
+
+    }
+
+//load
+$(document).ready(function (e) {
+    load_del_btn();
+    tinyMCE.triggerSave();
+    
+ });
+</script>
+<script src="{SERVER_URL}/js/admin/simple-editor-init.js"></script>
+<script src="{SERVER_URL}/js/admin/mid-editor-init.js"></script>
+<script src="{SERVER_URL}/js/admin/full-editor-init.js"></script>

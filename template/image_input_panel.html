@@ -1,0 +1,40 @@
+<div id="box-act-{ID-INPUT}" class="row form-group m-0">
+        <div class="col-3 text-right">
+            <label for="file-input" class=" form-control-label">Actual Image</label>
+        </div>
+        <div id="box-img-resp" class="col-4">
+            {IMG-ACTUAL}
+        </div>
+        <div class="col-5">
+                
+        </div>
+    </div>
+    <div id="box-{ID-INPUT}" class="row form-group">
+        <div class="col-3 text-right">
+            <label for="file-input" class=" form-control-label">Image</label>
+        </div>
+        <div class="col-9">
+            {IMG_INPUT}<button class="ml-1 btn btn-danger btn-cancel">Cancel</button>
+        </div>
+    </div>
+    <script>
+        $(".btn-cancel").click(function(){
+        
+            $("#box-{ID-INPUT}").slideUp(250);
+            $("#box-{ID-INPUT}").addClass("d-none");
+            $("#box-act-{ID-INPUT}").slideDown(450);
+            
+        });
+        
+        function del_click() {
+            $("#btn-del-hdr").click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $("#box-{ID-INPUT}").removeClass("d-none");
+            $("#box-{ID-INPUT}").slideDown(450);
+            $("#box-act-{ID-INPUT}").slideUp(250);
+            });
+        }
+
+        del_click();
+    </script>

@@ -1,0 +1,257 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-lg-12">
+      <div class="card">
+        <div class="card-header">Summary - Section 1 (Home S1)</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h5 class="text-justify">
+              Update the first section of the web page after the header video.
+            </h5>
+          </div>
+          <hr />
+          <div class="row p-0 m-0">
+              <div class="col-12 text-center">
+                  <img id="save-gif" class="invisible" src="{SERVER_URL}/images/loading-line.gif" />
+              </div>
+          </div>
+          <form action="" method="post" id="formula" name="formula">
+            <div class="row form-group">
+              <div class="col-9 text-right  ">
+                  <div id="save-resp" class="alert invisible ml-4" role="alert" ></div>
+              </div>
+              <div class="col-3 text-center">
+                <button
+                  id=""
+                  type="submit"
+                  class="btn btn-sm btn-info save-button">
+                  <i class="fa fa-edit fa-lg"></i>&nbsp;
+                  <span id="save-button-txt">Save S1</span>
+                  <span id="save-button-sending" style="display:none;" >Sending…</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-3 text-right">
+                <label for="title" class="control-label mb-1">Title</label>
+              </div>
+              <div class="col-9">
+                <input id="title" name="title" type="text" value="{TITLE}"
+                  class="form-control" placeholder="title here..."/>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-3 text-right">
+                <label for="subtitle" class="control-label mb-1">Subtitle</label>
+              </div>
+              <div class="col-9">
+                <input id="subtitle" name="subtitle" type="text" value="{SUBTITLE}"
+                  class="form-control" placeholder="subtitle here..."/>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-3 text-right">
+                <label for="file-input" class=" form-control-label">Content</label>
+              </div>
+              <div class="col-9">
+                <textarea class="mid-editor" id="paragraf" name="paragraf" placeholder="Content here...">{PARAGRAF}</textarea>
+              </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-9 text-right  ">
+                    &nbsp;
+                </div>
+                <div class="col-3 text-center">
+                    &nbsp;
+                    <!-- <button id="" type="submit" class="btn btn-sm btn-info save-button">
+                    <i class="fa fa-edit fa-lg"></i>&nbsp;
+                    <span id="save-button-txt">Save S1</span>
+                    <span id="save-button-sending" style="display:none;" >Sending…</span>
+                  </button>-->
+                </div>
+            </div>
+            <hr />
+            <div class="row form-group">
+              <div class="col-3 text-right">
+                <label for="file-input" class=" form-control-label"
+                  >Photo carousel</label
+                >
+                <input type="hidden" id="EID-SECTION" name="EID-SECTION" value="{EID-SECTION}" />
+              </div>
+              <div class="col-9">{IMG_INPUT}</div>
+            </div>
+            <div class="row form-group">
+              <div class="col-12 text-center">
+                  <img class="d-none send-gif" src="{SERVER_URL}/images/loading-line.gif"/>
+              </div>
+            </div>
+            <div class="row form-group photos-box">{PHOTOS_HOME_S1}</div>
+            <div class="row form-group">
+              <div class="col-12 text-right">
+                <div id="alert-resp" class="invisible"></div>
+                <img class="d-none send-gif" src="{SERVER_URL}/images/loading-line.gif"/>
+                
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$( document ).ready(function(){
+    load_del_btn();
+
+//photo-new-up-btn
+  $("#{INPUT-ID}-up-btn").click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(".send-gif").removeClass("invisible");
+
+    var unform = $("form")[0];
+    var file_data = new FormData(unform);
+    file_data.append("accion", "upload-photo");
+    file_data.append("{INPUT-ID}", $("#{INPUT-ID}")[0].files[0]);
+    file_data.append("{INPUT-ID}-alt", $("#{INPUT-ID}-alt").val());
+    file_data.append("EID-SECTION", $("#EID-SECTION").val());
+    for (var key of file_data.entries()) {
+      console.log(key[0] + ", " + key[1]);
+    }
+    $.ajax({
+      type: "POST",
+      url: "{SERVER_URL}/admin/ajax/home.php",
+      data: file_data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        $("#alert-resp").show();
+        res = JSON.parse(response);
+        $("#{INPUT-ID}-label").text("Upload New Image");
+        $("#{INPUT-ID}").val("");
+        if (res.code == 1) {$("#alert-resp").addClass("alert-success");load_photos();
+        } else {$("#alert-resp").addClass("alert-warning");}
+        $("#alert-resp").html(res.msj);
+        $(".send-gif").addClass("invisible");
+      }
+    });
+  });
+
+  $(".save-button").click(function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      tinyMCE.triggerSave();
+      $("#save-gif").removeClass("invisible");
+      var unform = $("#formula").serialize();
+      var file_data = new FormData();
+      file_data.append("accion", "save-s1");
+      file_data.append("formula", unform);
+      $("#formula div").slideUp(350);
+      $.ajax({
+        type: "POST",
+        url: "{SERVER_URL}/admin/ajax/home.php",
+        data: file_data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+          res = JSON.parse(response);
+          $("#formula div").slideDown(350);
+          $("#save-resp").html(res.msj);
+          $("#save-resp").removeClass("invisible");
+          $("#save-gif").addClass("invisible");
+        }
+      });
+  });
+
+});
+
+  function load_del_btn(){
+    $(".del-media-btn").click(function(e) {
+    $(".send-gif").removeClass("invisible");
+    e.preventDefault();
+    e.stopPropagation();
+    var slider = $(this).attr("data-id");
+    var file_data = new FormData();
+    file_data.append("accion", "delete-photo");
+    file_data.append("ID-SLIDER", slider);
+   
+    $.ajax({
+      type: "POST",
+      url: "{SERVER_URL}/admin/ajax/home.php",
+      data: file_data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        res = JSON.parse(response);
+        if (res.code == 1) {
+          load_photos(slider);
+        }
+        $("#alert-resp").html(res.msj);
+      }
+    });
+    
+  });
+
+  $(".update-alt-media-btn").click(function(e) {
+    $(".send-gif").removeClass("d-none");
+    e.preventDefault();
+    e.stopPropagation();
+    var slider = $(this).attr("data-id");
+    var file_data = new FormData();
+    file_data.append("accion", "update-alt-photo");
+    file_data.append("ID-SLIDER", slider);
+    file_data.append("ALT-TEXT", $("#alt-text-"+slider).val());
+    for (var key of file_data.entries()) {
+      console.log(key[0] + ", " + key[1]);
+    }
+    $.ajax({
+      type: "POST",
+      url: "{SERVER_URL}/admin/ajax/home.php",
+      data: file_data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        res = JSON.parse(response);
+        $("#alert-resp").removeClass("invisible").html(res.msj);
+        $(".send-gif").addClass("d-none");
+      }
+    });
+    
+  });
+
+    
+}
+
+  
+  function load_photos(slider) {
+    
+    var file_data = new FormData();
+    file_data.append("accion", "load-photos");
+    file_data.append("EID-SECTION", $("#EID-SECTION").val());
+    $(".photos-box").slideUp(250).delay(900);
+    
+    $.ajax({
+      type: "POST",
+      url: "{SERVER_URL}/admin/ajax/home.php",
+      data: file_data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        res = JSON.parse(response);
+        $(".photos-box").html(res.photos);
+        $(".send-gif").addClass("invisible");
+        $("#photo-box-" + slider).remove();
+        $(".photos-box").slideDown(250);
+        load_del_btn();
+      }
+    });
+  }
+</script>
+<script src="{SERVER_URL}/js/admin/mid-editor-init.js"></script>

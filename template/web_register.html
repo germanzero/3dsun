@@ -1,0 +1,261 @@
+{SCROLLER-INDICATOR}
+<div class="container-fluid bg-white">
+    <div class="row">
+        <div class="container  box-cont">
+            <form id="formcontact" name="formcontact">
+                <div class="row  sections-row map-top-row">
+                    <div class="col-7  ">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <h3 class="section-title pt-5 pb-5 ">{REGISTRY}</h3>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row ">
+                    <div class="col-9">
+
+                        <div class="box-msj-contact"></div>
+                        <div id="box-form-fields">
+                            <div class="form-group row">
+                                <label for="name_reg" class="col-sm-5 reg-label">{NAME} *</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="name_reg" name="name_reg" placeholder="{NAME} *" value="" data-container="body"
+                                        data-toggle="popover" data-placement="top" data-content="Ingrese su nombre por favor.">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lastname_reg" class="col-sm-5 ">{LASTNAME} *</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="lastname_reg" name="lastname_reg" placeholder="{LASTNAME} *" value="" data-container="body"
+                                        data-toggle="popover" data-placement="left" data-content="Ingrese su apellido por favor.">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email_reg" class="col-sm-5 ">{MAIL} *</label>
+                                <div class="col-sm-7">
+                                    <input type="email" class="form-control" id="email_reg" name="email_reg" placeholder="ejemplo@correo.com" value="" data-container="body"
+                                        data-toggle="popover" data-placement="right" data-content="Una dirección de correo electrónica válida debe ser como la siguiente: ejemplo@correo.com">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email_conf_reg" class="col-sm-5 ">{REMAIL} *</label>
+                                <div class="col-sm-7">
+                                    <input type="email" class="form-control" id="email_conf_reg" name="email_conf_reg" placeholder="ejemplo@correo.com" value=""
+                                        data-container="body" data-toggle="popover" data-placement="left" data-content="Este campo debe coincidir con el campo superior (Email).">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="pass_reg" class="col-sm-5 ">{PASS} *</label>
+                                <div class="col-sm-7">
+                                    <input type="password" class="form-control" id="pass_reg" name="pass_reg" placeholder="******" data-container="body" data-toggle="popover"
+                                        data-placement="right" title="Contraseña" data-content="Letra mayúscula del alfabeto (A-Z). Letra minúscula del alfabeto (a-z). Cifra decimal (0-9)
+                                    Caracteres especiales, tales como ( . / @ _ ? * > : , ) ">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fijo_reg" class="col-sm-5 ">{PHONE} *</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="fijo_reg" name="fijo_reg" placeholder="{PHONE} *" value="" data-container="body"
+                                        data-toggle="popover" data-placement="left" data-content="Ingrese un número telefónico de contacto.">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="movil_reg" class="col-sm-5 ">{MOVIL}</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="movil_reg" name="movil_reg" placeholder="{MOVIL}" value="">
+                                </div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <br>
+                                <img id='send-gif' class="float-right" src='{SERVER_URL}/images/loading-line.gif'>
+                                <br>
+                                <div class="float-right">
+
+                                    <button id="btn-clear" type="button" class="btn btn-lg btn-gray bdr-cero btn-default">{BORRAR}</button>
+                                    <button id="btn-send" type="submit" class="btn btn-primary btn-lg bdr-cero  btn-blue1">{ENVIAR}</button>
+                                    <br>
+                                    <span class="reg-legend">- (*) {W-TXT-OBLIG}</span>
+                                    <br>
+                                    <span class="reg-legend">- {W-TXT-HELPS}:&nbsp;
+                                        <a id="show-helps">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                    </span>
+                                    <br>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        &nbsp;
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(document).ready(function () {
+        jQuery("#send-gif").hide(100);
+        $("#show-helps").click(function () {
+            $("#formcontact input").popover('toggle');
+        });
+
+        function invalidate_input(id) {
+            jQuery(id).addClass("is-invalid");
+            jQuery(id).attr("required");
+            $(id).popover('toggle');
+        }
+        function validate_input(id) {
+            jQuery(id).removeClass("is-invalid");
+            jQuery(id).addClass("is-valid");
+            $(id).popover('hide');
+        }
+
+        function validate_reg() {
+
+            if (jQuery("#name_reg").val() === "") { invalidate_input("#name_reg"); return false; } else { validate_input("#name_reg"); }
+            if (jQuery("#lastname_reg").val() === "") { invalidate_input("#lastname_reg"); return false; } else { validate_input("#lastname_reg"); }
+            if (jQuery("#email_reg").val() === "") { invalidate_input("#email_reg"); return false; } else { validate_input("#email_reg"); }
+            if (jQuery("#email_conf_reg").val() === "") { invalidate_input("#email_conf_reg"); return false; } else { validate_input("#email_conf_reg"); }
+            if (jQuery("#email_reg").val() != jQuery("#email_conf_reg").val()) { invalidate_input("#email_reg"); invalidate_input("#email_conf_reg"); return false; }
+            if (jQuery("#pass_reg").val() === "") { invalidate_input("#pass_reg"); return false; } else { validate_input("#pass_reg"); }
+            if (jQuery("#fijo_reg").val() === "") { invalidate_input("#fijo_reg"); return false; } else { validate_input("#fijo_reg"); }
+            /*
+                        var em = jQuery("#email_reg").val();
+                        var emc = jQuery("#email_reg_conf").val();
+                        console.log("5-3")
+                            
+                        if (em === emc) return true;
+                        else return false;*/
+            return true;
+
+        }
+
+        jQuery("#formcontact").submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("5-1")
+
+
+
+            if (validate_reg()) {
+
+                jQuery("#send-gif").show(100);
+                jQuery("#btn-send").addClass("disabled");
+                jQuery("#btn-send").attr("aria-disabled", "true");
+
+
+                var form = jQuery("#formcontact").serialize();
+                var file_data = new FormData();
+
+                file_data.append("accion", "registro_web");
+                file_data.append("formula", form);
+
+                /*
+                for (var key of file_data.entries()) {
+                    console.log(key[0] + ', ' + key[1]);
+                }*/
+
+                $.ajax({
+                    type: "POST",
+                    url: "{SERVER_URL}/web/server/contact.php",
+                    data: file_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        console.log(response);
+                        res = JSON.parse(response);
+                        console.log(res);
+                        if (res.code == 2) {
+                            jQuery("#box-form-fields").slideUp(400);
+
+                        }
+                        jQuery(".box-msj-contact").html(res.msj);
+                        jQuery("#btn-send").removeClass("disabled");
+                        jQuery("#btn-send").attr("aria-disabled", "false");
+                        jQuery("#send-gif").hide(100);
+                    }
+                });
+            }
+        });
+
+
+
+        /*
+        $("#btn-send").click(function () {
+            console.log("5-1")
+                
+                jQuery("#btn-send").after("<img id='send-gif' src='{SERVER_URL}/images/loading-line.gif'>");
+                jQuery("#btn-send").addClass("disabled");
+                jQuery("#btn-send").attr("aria-disabled", "true");
+                console.log("5-2")
+                    
+                if (!validate_reg()) {
+                    console.log("5-4")
+                    jQuery(".box-msj-contact").html("Confirme los correos electrónicos");
+                    jQuery("#btn-send").removeClass("disabled");
+                    jQuery("#btn-send").attr("aria-disabled", "false");
+                    jQuery("#send-gif").remove();
+                    return false;
+                }
+                console.log("5-5")
+                   
+                var form = jQuery("#formcontact").serialize();
+                var file_data = new FormData();
+                console.log("5-6")
+                   
+                file_data.append("accion", "registro_web");
+                file_data.append("formula", form);
+    
+                for (var key of file_data.entries()) {
+                    console.log(key[0] + ', ' + key[1]);
+                }
+    
+                $.ajax({
+                    type: "POST",
+                    url: "{SERVER_URL}/web/server/contact.php",
+                    data: file_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        console.log(response);
+                        res = JSON.parse(response);
+                        console.log(res);
+                        if (res.code == 2) {
+                            jQuery("#box-form-fields").slideUp(400);
+                            jQuery("#box-form-fields").slideUp(400);
+    
+                        }
+                        jQuery(".box-msj-contact").html(res.msj);
+                        jQuery("#btn-send").removeClass("disabled");
+                        jQuery("#btn-send").attr("aria-disabled", "false");
+                        jQuery("#send-gif").remove();
+                    }
+                });
+        });*/
+
+
+
+
+
+    });
+</script>
